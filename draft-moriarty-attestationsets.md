@@ -47,8 +47,12 @@ author:
   country: USA
 
 normative:
+  RFC2119:
+  RFC8392:
+  RFC5719:
 
 informative:
+  I-D.ietf-rats-eat: RATS-EAT
 
 --- abstract
 
