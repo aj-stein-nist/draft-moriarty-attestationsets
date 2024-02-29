@@ -1,58 +1,54 @@
 ---
-###
-# Internet-Draft Markdown Template
-#
-# Rename this file from draft-todo-yourname-protocol.md to get started.
-# Draft name format is "draft-<yourname>-<workgroup>-<name>.md".
-#
-# For initial setup, you only need to edit the first block of fields.
-# Only "title" needs to be changed; delete "abbrev" if your title is short.
-# Any other content can be edited, but be careful not to introduce errors.
-# Some fields will be set automatically during setup if they are unchanged.
-#
-# Don't include "-00" or "-latest" in the filename.
-# Labels in the form draft-<yourname>-<workgroup>-<name>-latest are used by
-# the tools to refer to the current version; see "docname" for example.
-#
-# This template uses kramdown-rfc: https://github.com/cabo/kramdown-rfc
-# You can replace the entire file if you prefer a different format.
-# Change the file extension to match the format (.xml for XML, etc...)
-#
-###
-title: "TODO - Your title"
-abbrev: "TODO - Abbreviation"
-category: info
+v: 3
 
-docname: draft-todo-yourname-protocol-latest
-submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
+title: Scalable Remote Attestation for Systems, Containers, and Applications
+abbrev: SRASCA
+docname: draft-moriarty-attestationsets-latest
+cat: std
+consensus: yes
+submissiontype: IETF
 number:
 date:
 consensus: true
-v: 3
-area: AREA
-workgroup: WG Working Group
+area: Security
 keyword:
- - next generation
- - unicorn
- - sparkling distributed ledger
+
+
 venue:
-  group: WG
-  type: Working Group
-  mail: WG@example.com
-  arch: https://example.com/WG
-  github: USER/REPO
-  latest: https://example.com/LATEST
+  group: "Remote ATtestation ProcedureS (rats)"
+  type: "Working Group"
+  mail: "rats@ietf.org"
+  arch: https://mailarchive.ietf.org/arch/browse/rats/
+  github: aj-stein-nist/draft-moriarty-attestationsets
+  latest: https://aj-stein-nist.github.io/draft-moriarty-attestationsets/draft-moriarty-attestationsets.html
+venue:
+  group: RATS
+  mail: rats@ietf.org
+  github: aj-stein-nist/draft-moriarty-attestationsets
 
 author:
- -
-    fullname: Your Name Here
-    organization: Your Organization Here
-    email: your.email@example.com
+- name: Kathleen M. Moriarty
+  org: Center for Internet Security
+  abbrev: CIS
+  email: kathleen.Moriarty.ietf@gmail.com
+  street: 31 Tech Valley Drive
+  code: '12061'
+  city: East Greenbush
+  region: NY
+  country: USA
+- name: Antonio Fontes
+  org: Dell Technologies
+  abbrev: Dell
+  email: antonio.fontes@dell.com
+  street: 176 South Street
+  code: '01748'
+  city: Hopkinton
+  region: MA
+  country: USA
 
 normative:
 
 informative:
-
 
 --- abstract
 
