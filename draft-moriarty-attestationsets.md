@@ -147,6 +147,15 @@ In this case, the creator of the attestation verification measurements would def
 The expected measurements would include the expected hash value for comparison.
 The configuration set could be the full attestation set to a Benchmark or a defined subset.
 
+# Remediation
+
+If policy and configration settings or measurements attestated do not meet expected values, remediation is desireable.
+Automated remediation performed with alignment to zero trust architecture principles would require that the remeidation be performed prior to any relying component executing.
+The relying component would verifiy before continuing in a zero trust architecture.
+
+Ideally, remediation would occur on system as part of the process to attest to a set of attestations, similar to how attestation is performed for firmware in the boot process.
+If automated remediation is not possible, an alert should be generated to allow for notification of the variance from expected values.
+
 # Security Considerations
 
 TODO Security
