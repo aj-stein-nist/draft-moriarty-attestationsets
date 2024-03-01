@@ -83,9 +83,7 @@ Table of Contents
    6.  Remediation
    7.  Security Considerations
    8.  IANA Considerations
-   9.  References
-     9.1.  Normative References
-     9.2.  Informative References
+   9.  Normative References
    Contributors
    Authors' Addresses
 
@@ -290,9 +288,14 @@ Table of Contents
    DISA STIGS, controls, or other groupings of policy and measurements
    to map the standards document to a claim set for verification.
 
-9.  References
+9.  Normative References
 
-9.1.  Normative References
+   [I-D.ietf-rats-eat]
+              Lundblade, L., Mandyam, G., O'Donoghue, J., and C.
+              Wallace, "The Entity Attestation Token (EAT)", Work in
+              Progress, Internet-Draft, draft-ietf-rats-eat-25, 15
+              January 2024, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-rats-eat-25>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -310,15 +313,6 @@ Table of Contents
    [RFC8392]  Jones, M., Wahlstroem, E., Erdtman, S., and H. Tschofenig,
               "CBOR Web Token (CWT)", RFC 8392, DOI 10.17487/RFC8392,
               May 2018, <https://www.rfc-editor.org/rfc/rfc8392>.
-
-9.2.  Informative References
-
-   [I-D.ietf-rats-eat]
-              Lundblade, L., Mandyam, G., O'Donoghue, J., and C.
-              Wallace, "The Entity Attestation Token (EAT)", Work in
-              Progress, Internet-Draft, draft-ietf-rats-eat-25, 15
-              January 2024, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-rats-eat-25>.
 
 Contributors
 
