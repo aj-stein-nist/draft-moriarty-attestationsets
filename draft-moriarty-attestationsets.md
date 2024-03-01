@@ -54,9 +54,9 @@ normative:
   RFC2119:
   RFC8392:
   RFC7519:
+  I-D.ietf-rats-eat:
 
 informative:
-  I-D.ietf-rats-eat:
 
 --- abstract
 
