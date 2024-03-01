@@ -139,6 +139,14 @@ In the case of Re-Attestation:
 - framework needs to maintain history or allow for history to be logged to enable change traceability attestation, and
 - framework needs to notify that the previous attestation has been invalidated
 
+# Configuration Sets
+
+In some cases, it may be difficult to attest to configuration settings for the initial or subsequent attestation and verification processes.
+The use of an expected hash value for configuration settings can be used to compare the attested configuration set.
+In this case, the creator of the attestation verification measurements would define a set of values for which a message digest would be created and then signed by the attestor.
+The expected measurements would include the expected hash value for comparison.
+The configuration set could be the full attestation set to a Benchmark or a defined subset.
+
 # Security Considerations
 
 TODO Security
