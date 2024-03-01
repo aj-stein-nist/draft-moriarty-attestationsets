@@ -165,7 +165,7 @@ This document does not add security consideration over what has been described i
 
 # IANA Considerations
 
-This memo includes no request to IANA, yet. 
+This memo includes no request to IANA, yet.
 This will list the initial registration sets to the JWT and CWT registries if adopted.
 The registry will contain the names of the Benchmarks, Policy sets, DISA STIGS, controls, or other groupings of policy and measurements to map the standards document to a claim set for verification.
 
