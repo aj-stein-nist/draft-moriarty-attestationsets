@@ -326,7 +326,7 @@ Contributors
    sets.  Thank you, Samant Kakarla and Huijun Xie from Dell
    Technologies, for your detailed review and corrections on boot
    process details.  Section 3 has been contributed by Rudy Bauer from
-   Dell as well and an author will be added on the next reveision.
+   Dell as well and an author will be added on the next revision.
 
 Authors' Addresses
 
