@@ -113,6 +113,13 @@ interface in aggregate for the systems managed.
 This document defines EAT claims in the JWT [RFC7519] and CWT [RFC8392] registries to provide attestation to a set of verified claims within a defined grouping.
 The trustworthiness will be conveyed on original verified evidence as well as the attestation on the grouping.
 
+| Claim | Long Name                  | Description                      | Format
+|---
+| MPS   | Measurement or Policy Set  | Name for the MPS                 |
+| LEM   | Log Evidence of MPS        | Log File or URI                  |
+| PCR   | TPM PCR Values             | URI                              |
+| FMA   | Format of MPS Attestations | Format of included attestations  |
+| HSH   | Hash Value/Message Digest  | Hash value of claim-set          |
 
 # Security Considerations
 
