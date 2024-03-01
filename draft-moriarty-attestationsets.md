@@ -121,6 +121,24 @@ The trustworthiness will be conveyed on original verified evidence as well as th
 | FMA   | Format of MPS Attestations | Format of included attestations  |
 | HSH   | Hash Value/Message Digest  | Hash value of claim-set          |
 
+# Supportability and Re-Attestation
+
+The remote attestation framework shall include provisions within the system and attestation authority to allow for Product modification.
+
+Over its lifecycle, the Product may experience modification due to: maintenance, failures, upgrades, expansion, moves, etc..
+
+The customer can chose to:
+
+- Run remote attestation after product modification, or
+- Not take action and remain un-protected
+
+In the case of Re-Attestation:
+
+- framework needs to invalidate previous TPM PCR values and tokens,
+- framework needs to collect new measurements,
+- framework needs to maintain history or allow for history to be logged to enable change traceability attestation, and
+- framework needs to notify that the previous attestation has been invalidated
+
 # Security Considerations
 
 TODO Security
