@@ -32,14 +32,13 @@ author:
   city: East Greenbush
   region: NY
   country: USA
-- name: Antonio Fontes
-  org: Dell Technologies
-  abbrev: Dell
-  email: antonio.fontes@dell.com
-  street: 176 South Street
-  code: '01748'
-  city: Hopkinton
-  region: MA
+- name: Monty Wiseman
+  org: Beyond Identity
+  email: monty.wiseman@beyondidentity.com
+  street: 3 Park Avenue
+  code: '10016'
+  city: NY
+  region: NY
   country: USA
 
 normative:
