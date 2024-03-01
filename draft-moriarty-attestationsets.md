@@ -158,8 +158,10 @@ If automated remediation is not possible, an alert should be generated to allow 
 
 # Security Considerations
 
-TODO Security
-
+This document establishes a pattern to list sets of benchmarks and controls within CWT and JWT formats.
+The contents of the benchmarks and controls are out of scope for this document.
+This establishes an architectural pattern whereby a remote attestation could be issued for a complete set of benchmarks or controls as defined and grouped by external entities, preventing the need to send over individual attestations for each item within a benchmark or control framework.
+This document does not add security consideration over what has been described in the EAT, JWT, or CWT specifications.
 
 # IANA Considerations
 
