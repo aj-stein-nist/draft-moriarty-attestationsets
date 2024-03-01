@@ -6,26 +6,27 @@
 <meta content="initial-scale=1.0" name="viewport">
 <title>Scalable Remote Attestation for Systems, Containers, and Applications</title>
 <meta content="Kathleen M. Moriarty" name="author">
-<meta content="Antonio Fontes" name="author">
+<meta content="Monty Wiseman" name="author">
+<meta content="A.J. Stein" name="author">
 <meta content="
        This document establishes an architectural pattern whereby a remote attestation could be issued for a complete set of benchmarks or controls that are defined and grouped by an external entity, preventing the need to send over individual attestations for each item within a benchmark or control framework.
 This document establishes a pattern to list sets of benchmarks and controls within CWT and JWT formats for use as an Entity Attestation Token (EAT). 
     " name="description">
-<meta content="xml2rfc 3.20.0" name="generator">
+<meta content="xml2rfc 3.19.4" name="generator">
 <meta content="draft-moriarty-attestationsets-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.20.0
+  xml2rfc 3.19.4
     Python 3.11.6
     ConfigArgParse 1.7
     google-i18n-address 3.1.0
     intervaltree 3.1.0
-    Jinja2 3.1.3
-    lxml 4.9.4
+    Jinja2 3.1.2
+    lxml 4.9.3
     platformdirs 4.2.0
-    pycountry 23.12.11
+    pycountry 22.3.5
     PyYAML 6.0.1
     requests 2.31.0
-    setuptools 69.1.1
+    setuptools 68.2.2
     six 1.16.0
     wcwidth 0.2.13
 -->
@@ -1029,7 +1030,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <td class="right">March 2024</td>
 </tr></thead>
 <tfoot><tr>
-<td class="left">Moriarty &amp; Fontes</td>
+<td class="left">Moriarty, et al.</td>
 <td class="center">Expires 2 September 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
@@ -1056,8 +1057,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <div class="org">CIS</div>
 </div>
 <div class="author">
-      <div class="author-name">A. Fontes</div>
-<div class="org">Dell</div>
+      <div class="author-name">M. Wiseman</div>
+<div class="org">Beyond Identity</div>
+</div>
+<div class="author">
+      <div class="author-name">A.J. Stein</div>
+<div class="org">NIST</div>
 </div>
 </dd>
 </dl>
@@ -1450,16 +1455,29 @@ Section 3 has been contributed by Rudy Bauer from Dell as well and an author wil
 </div>
 </address>
 <address class="vcard">
-        <div dir="auto" class="left"><span class="fn nameRole">Antonio Fontes</span></div>
-<div dir="auto" class="left"><span class="org">Dell Technologies</span></div>
-<div dir="auto" class="left"><span class="street-address">176 South Street</span></div>
+        <div dir="auto" class="left"><span class="fn nameRole">Monty Wiseman</span></div>
+<div dir="auto" class="left"><span class="org">Beyond Identity</span></div>
+<div dir="auto" class="left"><span class="street-address">3 Park Avenue</span></div>
 <div dir="auto" class="left">
-<span class="locality">Hopkinton</span>, <span class="region">MA</span> <span class="postal-code">01748</span>
+<span class="locality">NY</span>, <span class="region">NY</span> <span class="postal-code">10016</span>
 </div>
 <div dir="auto" class="left"><span class="country-name">United States of America</span></div>
 <div class="email">
 <span>Email:</span>
-<a href="mailto:antonio.fontes@dell.com" class="email">antonio.fontes@dell.com</a>
+<a href="mailto:monty.wiseman@beyondidentity.com" class="email">monty.wiseman@beyondidentity.com</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">A.J. Stein</span></div>
+<div dir="auto" class="left"><span class="org">National Institute of Standards and Technology</span></div>
+<div dir="auto" class="left"><span class="street-address">100 Bureau Drive</span></div>
+<div dir="auto" class="left">
+<span class="locality">Gaithersburg</span>, <span class="region">MD</span> <span class="postal-code">20899</span>
+</div>
+<div dir="auto" class="left"><span class="country-name">United States of America</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:ajstein.standards@gmail.com" class="email">ajstein.standards@gmail.com</a>
 </div>
 </address>
 </section>

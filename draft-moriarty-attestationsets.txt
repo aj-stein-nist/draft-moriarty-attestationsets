@@ -4,8 +4,10 @@
 
 Network Working Group                                     K. M. Moriarty
 Internet-Draft                                                       CIS
-Intended status: Standards Track                               A. Fontes
-Expires: 2 September 2024                                           Dell
+Intended status: Standards Track                              M. Wiseman
+Expires: 2 September 2024                                Beyond Identity
+                                                              A.J. Stein
+                                                                    NIST
                                                             1 March 2024
 
 
@@ -338,9 +340,17 @@ Authors' Addresses
    Email: kathleen.Moriarty.ietf@gmail.com
 
 
-   Antonio Fontes
-   Dell Technologies
-   176 South Street
-   Hopkinton, MA 01748
+   Monty Wiseman
+   Beyond Identity
+   3 Park Avenue
+   NY, NY 10016
    United States of America
-   Email: antonio.fontes@dell.com
+   Email: monty.wiseman@beyondidentity.com
+
+
+   A.J. Stein
+   National Institute of Standards and Technology
+   100 Bureau Drive
+   Gaithersburg, MD 20899
+   United States of America
+   Email: ajstein.standards@gmail.com
