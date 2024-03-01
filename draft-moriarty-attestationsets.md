@@ -40,6 +40,15 @@ author:
   city: NY
   region: NY
   country: USA
+- name: A.J. Stein
+  org: National Institute of Standards and Technology
+  abbrev: NIST
+  email: ajstein.standards@gmail.com
+  street: 100 Bureau Drive
+  code: '20899'
+  city: Gaithersburg
+  region: MD
+  country: USA
 
 normative:
   RFC2119:
