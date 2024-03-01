@@ -171,7 +171,10 @@ The registry will contain the names of the Benchmarks, Policy sets, DISA STIGS, 
 
 --- back
 
-# Acknowledgments
+# Contributors
 {:numbered="false"}
 
-TODO acknowledge.
+Thank you to reviewers and contributors who helped to improve this document.
+Thank you to Nick Grobelney, Dell Technologies, for your review and contribution to separate out the policy and measurement sets.
+Thank you, Samant Kakarla and Huijun Xie from Dell Technologies, for your detailed review and corrections on boot process details.
+Section 3 has been contributed by Rudy Bauer from Dell as well and an author will be added on the next reveision.
