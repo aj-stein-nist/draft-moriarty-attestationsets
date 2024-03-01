@@ -99,9 +99,7 @@ profiles include, but are not limited to:
 
 Scale, ease of use, full automation, and consistency for customer consumption of a remote attestation function or service are essential toward the goal of consistently securing systems against known threats and vulnerabilities.
 Mitigations may be baked into policy.
-Claim sets of measurements and policy verified to meet or not meet
-<xref target="I-D.ietf-rats-eat"> Endorsed values </xref> are
-conveyed in an Entity Attestation Token made available to a RESTful
+Claim sets of measurements and policy verified to meet or not meet Endorsed values [I-D.ietf-rats-eat] are conveyed in an Entity Attestation Token made available to a RESTful
 interface in aggregate for the systems managed.
 
 # Conventions and Definitions
