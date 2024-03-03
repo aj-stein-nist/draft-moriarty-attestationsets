@@ -57,6 +57,11 @@ normative:
   I-D.ietf-rats-eat:
 
 informative:
+  RFC8832:
+  FIRMWARE: DOI.10.6028/NIST.SP.800-193
+  REDFISH:
+    target: https://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.20.0.pdf
+    title: Redfish Specification Version 1.20.0
 
 --- abstract
 
@@ -76,11 +81,11 @@ This document describes a method to use existing attestation formats and protoco
 
 By way of example, the Center for Internet Security (CIS) hosts recommended configuration settings to secure operating systems, applications, and devices in CIS Benchmarks developed with industry experts.
 Attestations aligned to the CIS Benchmarks or other configuration guide such as a DISA STIG could be used to assert the configuration meets expectations.
-This has already been done for multiple platforms to demonstrate assurance for firmware according to NIST SP 800-193, Firmware Resiliency Guidelines.  In order to scale remote attestation, a single attestation for a set of Benchmarks or policies being met may be sent to the remote atteststaion management system.
+This has already been done for multiple platforms to demonstrate assurance for firmware according to NIST SP 800-193, Firmware Resiliency Guidelines [FIRMWARE].  In order to scale remote attestation, a single attestation for a set of benchmarks or policies being met may be sent to the remote attestation management system.
 On traditional servers, assurance to NIST SP 800-193 is provable through attestation from a root of trust (RoT), using the Trusted Computing Group (TCG) Trusted Platform Module (TPM) chip and attestation formats.
 
-At boot, policy and measurement expectations are verified against a set of "golden policies" from collected and attested evidence.  Device identity and measurements can also be attestated at runtime.  The attestations on evidence (e.g. hash of boot element) and verification of attestations are typically contained within a system and are limited to the control plane for
-management.
+At boot, policy and measurement expectations are verified against a set of "golden policies" from collected and attested evidence.  Device identity and measurements can also be attested at runtime.
+The attestations on evidence (e.g. hash of boot element) and verification of attestations are typically contained within a system and are limited to the control plane for management.
 The policy and measurement sets for comparison are protected to assure the result in the attestation verification process for boot element.
 Event logs and PCR values may be exposed to provide transparency into the verified attestations.  Remote attestation provides a summary of a local assessment of posture for managed systems and across various layers (operating system, application, containers) in each of these systems in a managed environment.
 
@@ -88,15 +93,14 @@ There is a balance of exposure and evidence needed to assess posture when provid
 Currently, logs and TPM PCR values may be passed to provide assurance of verification of attestation evidence meeting set requirements.
 Providing the assurance can be accomplished with a remote attestation
 format such as the Entity Attestation Token (EAT) [I-D.ietf-rats-eat]
-and a RESTful interface such as ROLIE or RedFish.
+and a RESTful interface such as ROLIE [RFC8832] or RedFish [REDFISH].
 Policy definition blocks may be scoped to control measurement sets, where the EAT profile asserts compliance to the policy or measurement block specified and may include claims with the log and PCR value evidence.
 Measurement and Policy sets in an EAT profile may be published and
 maintained by separate entities (e.g.  CIS Benchmarks, DISA STIGs).
 The policy and measurement sets should be maintained separately even if associated with the same benchmark or control set.
 This avoids the need to transition the verifying entity to a remote system for individual policy and measurements which are performed locally for more immediate remediation as well as other functions.
 
-Examples of measurement and policy sets that could be defined in EAT
-profiles include, but are not limited to:
+Examples of measurement and policy sets that could be defined in EAT profiles include, but are not limited to:
 
 - Hardware attribute certificates, TCG
 - Hardware Attribute Certificate Comparison Results, TCG
@@ -155,9 +159,9 @@ The configuration set could be the full attestation set to a Benchmark or a defi
 
 # Remediation
 
-If policy and configration settings or measurements attestated do not meet expected values, remediation is desireable.
-Automated remediation performed with alignment to zero trust architecture principles would require that the remeidation be performed prior to any relying component executing.
-The relying component would verifiy before continuing in a zero trust architecture.
+If policy and configuration settings or measurements attested do not meet expected values, remediation is desireable.
+Automated remediation performed with alignment to zero trust architecture principles would require that the remediation be performed prior to any relying component executing.
+The relying component would verify before continuing in a zero trust architecture.
 
 Ideally, remediation would occur on system as part of the process to attest to a set of attestations, similar to how attestation is performed for firmware in the boot process.
 If automated remediation is not possible, an alert should be generated to allow for notification of the variance from expected values.
@@ -183,4 +187,4 @@ The registry will contain the names of the Benchmarks, Policy sets, DISA STIGS, 
 Thank you to reviewers and contributors who helped to improve this document.
 Thank you to Nick Grobelney, Dell Technologies, for your review and contribution to separate out the policy and measurement sets.
 Thank you, Samant Kakarla and Huijun Xie from Dell Technologies, for your detailed review and corrections on boot process details.
-Section 3 has been contributed by Rudy Bauer from Dell as well and an author will be added on the next reveision.
+Section 3 has been contributed by Rudy Bauer from Dell as well and an author will be added on the next revision.
