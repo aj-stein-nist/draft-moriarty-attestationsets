@@ -6,7 +6,8 @@
 <meta content="initial-scale=1.0" name="viewport">
 <title>Scalable Remote Attestation for Systems, Containers, and Applications</title>
 <meta content="Kathleen M. Moriarty" name="author">
-<meta content="Antonio Fontes" name="author">
+<meta content="Monty Wiseman" name="author">
+<meta content="A.J. Stein" name="author">
 <meta content="
        This document establishes an architectural pattern whereby a remote attestation could be issued for a complete set of benchmarks or controls that are defined and grouped by an external entity, preventing the need to send over individual attestations for each item within a benchmark or control framework.
 This document establishes a pattern to list sets of benchmarks and controls within CWT and JWT formats for use as an Entity Attestation Token (EAT). 
@@ -1029,7 +1030,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <td class="right">March 2024</td>
 </tr></thead>
 <tfoot><tr>
-<td class="left">Moriarty &amp; Fontes</td>
+<td class="left">Moriarty, et al.</td>
 <td class="center">Expires 4 September 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
@@ -1056,8 +1057,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <div class="org">CIS</div>
 </div>
 <div class="author">
-      <div class="author-name">A. Fontes</div>
-<div class="org">Dell</div>
+      <div class="author-name">M. Wiseman</div>
+<div class="org">Beyond Identity</div>
+</div>
+<div class="author">
+      <div class="author-name">A.J. Stein</div>
+<div class="org">NIST</div>
 </div>
 </dd>
 </dl>
@@ -1229,7 +1234,8 @@ This avoids the need to transition the verifying entity to a remote system for i
       </ul>
 <p id="section-1-7">Scale, ease of use, full automation, and consistency for customer consumption of a remote attestation function or service are essential toward the goal of consistently securing systems against known threats and vulnerabilities.
 Mitigations may be baked into policy.
-Claim sets of measurements and policy verified to meet or not meet <span><a href="#I-D.ietf-rats-eat" class="internal xref">Endorsed values</a> [<a href="#I-D.ietf-rats-eat" class="cite xref">I-D.ietf-rats-eat</a>]</span> are conveyed in an Entity Attestation Token made available to a RESTful interface in aggregate for the systems managed.<a href="#section-1-7" class="pilcrow">¶</a></p>
+Claim sets of measurements and policy verified to meet or not meet Endorsed values <span>[<a href="#I-D.ietf-rats-eat" class="cite xref">I-D.ietf-rats-eat</a>]</span> are conveyed in an Entity Attestation Token made available to a RESTful
+interface in aggregate for the systems managed.<a href="#section-1-7" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="conventions-and-definitions">
@@ -1383,6 +1389,10 @@ The registry will contain the names of the Benchmarks, Policy sets, DISA STIGS, 
 <a href="#section-9.1" class="section-number selfRef">9.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
         </h3>
 <dl class="references">
+<dt id="I-D.ietf-rats-eat">[I-D.ietf-rats-eat]</dt>
+        <dd>
+<span class="refAuthor">Lundblade, L.</span>, <span class="refAuthor">Mandyam, G.</span>, <span class="refAuthor">O'Donoghue, J.</span>, and <span class="refAuthor">C. Wallace</span>, <span class="refTitle">"The Entity Attestation Token (EAT)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-rats-eat-25</span>, <time datetime="2024-01-15" class="refDate">15 January 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-25">https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-25</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC2119">[RFC2119]</dt>
         <dd>
 <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>&gt;</span>. </dd>
@@ -1411,10 +1421,6 @@ The registry will contain the names of the Benchmarks, Policy sets, DISA STIGS, 
 <dt id="FIRMWARE">[FIRMWARE]</dt>
         <dd>
 <span class="refAuthor">Regenscheid, A.</span>, <span class="refTitle">"Platform firmware resiliency guidelines"</span>, <span class="refContent">National Institute of Standards and Technology</span>, <span class="seriesInfo">DOI 10.6028/nist.sp.800-193</span>, <time datetime="2018-05" class="refDate">May 2018</time>, <span>&lt;<a href="https://doi.org/10.6028/nist.sp.800-193">https://doi.org/10.6028/nist.sp.800-193</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="I-D.ietf-rats-eat">[I-D.ietf-rats-eat]</dt>
-        <dd>
-<span class="refAuthor">Lundblade, L.</span>, <span class="refAuthor">Mandyam, G.</span>, <span class="refAuthor">O'Donoghue, J.</span>, and <span class="refAuthor">C. Wallace</span>, <span class="refTitle">"The Entity Attestation Token (EAT)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-rats-eat-25</span>, <time datetime="2024-01-15" class="refDate">15 January 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-25">https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-25</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="REDFISH">[REDFISH]</dt>
         <dd>
@@ -1458,16 +1464,29 @@ Section 3 has been contributed by Rudy Bauer from Dell as well and an author wil
 </div>
 </address>
 <address class="vcard">
-        <div dir="auto" class="left"><span class="fn nameRole">Antonio Fontes</span></div>
-<div dir="auto" class="left"><span class="org">Dell Technologies</span></div>
-<div dir="auto" class="left"><span class="street-address">176 South Street</span></div>
+        <div dir="auto" class="left"><span class="fn nameRole">Monty Wiseman</span></div>
+<div dir="auto" class="left"><span class="org">Beyond Identity</span></div>
+<div dir="auto" class="left"><span class="street-address">3 Park Avenue</span></div>
 <div dir="auto" class="left">
-<span class="locality">Hopkinton</span>, <span class="region">MA</span> <span class="postal-code">01748</span>
+<span class="locality">NY</span>, <span class="region">NY</span> <span class="postal-code">10016</span>
 </div>
 <div dir="auto" class="left"><span class="country-name">United States of America</span></div>
 <div class="email">
 <span>Email:</span>
-<a href="mailto:antonio.fontes@dell.com" class="email">antonio.fontes@dell.com</a>
+<a href="mailto:monty.wiseman@beyondidentity.com" class="email">monty.wiseman@beyondidentity.com</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">A.J. Stein</span></div>
+<div dir="auto" class="left"><span class="org">National Institute of Standards and Technology</span></div>
+<div dir="auto" class="left"><span class="street-address">100 Bureau Drive</span></div>
+<div dir="auto" class="left">
+<span class="locality">Gaithersburg</span>, <span class="region">MD</span> <span class="postal-code">20899</span>
+</div>
+<div dir="auto" class="left"><span class="country-name">United States of America</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:ajstein.standards@gmail.com" class="email">ajstein.standards@gmail.com</a>
 </div>
 </address>
 </section>

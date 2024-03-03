@@ -4,8 +4,10 @@
 
 Network Working Group                                     K. M. Moriarty
 Internet-Draft                                                       CIS
-Intended status: Standards Track                               A. Fontes
-Expires: 4 September 2024                                           Dell
+Intended status: Standards Track                              M. Wiseman
+Expires: 4 September 2024                                Beyond Identity
+                                                              A.J. Stein
+                                                                    NIST
                                                             3 March 2024
 
 
@@ -292,6 +294,13 @@ Table of Contents
 
 9.1.  Normative References
 
+   [I-D.ietf-rats-eat]
+              Lundblade, L., Mandyam, G., O'Donoghue, J., and C.
+              Wallace, "The Entity Attestation Token (EAT)", Work in
+              Progress, Internet-Draft, draft-ietf-rats-eat-25, 15
+              January 2024, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-rats-eat-25>.
+
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
@@ -315,13 +324,6 @@ Table of Contents
               guidelines", National Institute of Standards and
               Technology, DOI 10.6028/nist.sp.800-193, May 2018,
               <https://doi.org/10.6028/nist.sp.800-193>.
-
-   [I-D.ietf-rats-eat]
-              Lundblade, L., Mandyam, G., O'Donoghue, J., and C.
-              Wallace, "The Entity Attestation Token (EAT)", Work in
-              Progress, Internet-Draft, draft-ietf-rats-eat-25, 15
-              January 2024, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-rats-eat-25>.
 
    [REDFISH]  "Redfish Specification Version 1.20.0", n.d.,
               <https://www.dmtf.org/sites/default/files/standards/
@@ -351,9 +353,17 @@ Authors' Addresses
    Email: kathleen.Moriarty.ietf@gmail.com
 
 
-   Antonio Fontes
-   Dell Technologies
-   176 South Street
-   Hopkinton, MA 01748
+   Monty Wiseman
+   Beyond Identity
+   3 Park Avenue
+   NY, NY 10016
    United States of America
-   Email: antonio.fontes@dell.com
+   Email: monty.wiseman@beyondidentity.com
+
+
+   A.J. Stein
+   National Institute of Standards and Technology
+   100 Bureau Drive
+   Gaithersburg, MD 20899
+   United States of America
+   Email: ajstein.standards@gmail.com
