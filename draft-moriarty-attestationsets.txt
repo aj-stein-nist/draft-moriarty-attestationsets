@@ -5,10 +5,10 @@
 Network Working Group                                     K. M. Moriarty
 Internet-Draft                                                       CIS
 Intended status: Standards Track                              M. Wiseman
-Expires: 2 September 2024                                Beyond Identity
+Expires: 4 September 2024                                Beyond Identity
                                                               A.J. Stein
                                                                     NIST
-                                                            1 March 2024
+                                                            3 March 2024
 
 
  Scalable Remote Attestation for Systems, Containers, and Applications
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 2 September 2024.
+   This Internet-Draft will expire on 4 September 2024.
 
 Copyright Notice
 
@@ -83,7 +83,9 @@ Table of Contents
    6.  Remediation
    7.  Security Considerations
    8.  IANA Considerations
-   9.  Normative References
+   9.  References
+     9.1.  Normative References
+     9.2.  Informative References
    Contributors
    Authors' Addresses
 
@@ -115,17 +117,17 @@ Table of Contents
    configuration guide such as a DISA STIG could be used to assert the
    configuration meets expectations.  This has already been done for
    multiple platforms to demonstrate assurance for firmware according to
-   NIST SP 800-193, Firmware Resiliency Guidelines.  In order to scale
-   remote attestation, a single attestation for a set of Benchmarks or
-   policies being met may be sent to the remote atteststaion management
-   system.  On traditional servers, assurance to NIST SP 800-193 is
-   provable through attestation from a root of trust (RoT), using the
-   Trusted Computing Group (TCG) Trusted Platform Module (TPM) chip and
-   attestation formats.
+   NIST SP 800-193, Firmware Resiliency Guidelines [FIRMWARE].  In order
+   to scale remote attestation, a single attestation for a set of
+   benchmarks or policies being met may be sent to the remote
+   attestation management system.  On traditional servers, assurance to
+   NIST SP 800-193 is provable through attestation from a root of trust
+   (RoT), using the Trusted Computing Group (TCG) Trusted Platform
+   Module (TPM) chip and attestation formats.
 
    At boot, policy and measurement expectations are verified against a
    set of "golden policies" from collected and attested evidence.
-   Device identity and measurements can also be attestated at runtime.
+   Device identity and measurements can also be attested at runtime.
    The attestations on evidence (e.g. hash of boot element) and
    verification of attestations are typically contained within a system
    and are limited to the control plane for management.  The policy and
@@ -143,17 +145,17 @@ Table of Contents
    verification of attestation evidence meeting set requirements.
    Providing the assurance can be accomplished with a remote attestation
    format such as the Entity Attestation Token (EAT) [I-D.ietf-rats-eat]
-   and a RESTful interface such as ROLIE or RedFish.  Policy definition
-   blocks may be scoped to control measurement sets, where the EAT
-   profile asserts compliance to the policy or measurement block
-   specified and may include claims with the log and PCR value evidence.
-   Measurement and Policy sets in an EAT profile may be published and
-   maintained by separate entities (e.g.  CIS Benchmarks, DISA STIGs).
-   The policy and measurement sets should be maintained separately even
-   if associated with the same benchmark or control set.  This avoids
-   the need to transition the verifying entity to a remote system for
-   individual policy and measurements which are performed locally for
-   more immediate remediation as well as other functions.
+   and a RESTful interface such as ROLIE [RFC8832] or RedFish [REDFISH].
+   Policy definition blocks may be scoped to control measurement sets,
+   where the EAT profile asserts compliance to the policy or measurement
+   block specified and may include claims with the log and PCR value
+   evidence.  Measurement and Policy sets in an EAT profile may be
+   published and maintained by separate entities (e.g.  CIS Benchmarks,
+   DISA STIGs).  The policy and measurement sets should be maintained
+   separately even if associated with the same benchmark or control set.
+   This avoids the need to transition the verifying entity to a remote
+   system for individual policy and measurements which are performed
+   locally for more immediate remediation as well as other functions.
 
    Examples of measurement and policy sets that could be defined in EAT
    profiles include, but are not limited to:
@@ -255,11 +257,11 @@ Table of Contents
 
 6.  Remediation
 
-   If policy and configration settings or measurements attestated do not
+   If policy and configuration settings or measurements attested do not
    meet expected values, remediation is desireable.  Automated
    remediation performed with alignment to zero trust architecture
-   principles would require that the remeidation be performed prior to
-   any relying component executing.  The relying component would verifiy
+   principles would require that the remediation be performed prior to
+   any relying component executing.  The relying component would verify
    before continuing in a zero trust architecture.
 
    Ideally, remediation would occur on system as part of the process to
@@ -288,7 +290,9 @@ Table of Contents
    DISA STIGS, controls, or other groupings of policy and measurements
    to map the standards document to a claim set for verification.
 
-9.  Normative References
+9.  References
+
+9.1.  Normative References
 
    [I-D.ietf-rats-eat]
               Lundblade, L., Mandyam, G., O'Donoghue, J., and C.
@@ -314,6 +318,21 @@ Table of Contents
               "CBOR Web Token (CWT)", RFC 8392, DOI 10.17487/RFC8392,
               May 2018, <https://www.rfc-editor.org/rfc/rfc8392>.
 
+9.2.  Informative References
+
+   [FIRMWARE] Regenscheid, A., "Platform firmware resiliency
+              guidelines", National Institute of Standards and
+              Technology, DOI 10.6028/nist.sp.800-193, May 2018,
+              <https://doi.org/10.6028/nist.sp.800-193>.
+
+   [REDFISH]  "Redfish Specification Version 1.20.0", n.d.,
+              <https://www.dmtf.org/sites/default/files/standards/
+              documents/DSP0266_1.20.0.pdf>.
+
+   [RFC8832]  Jesup, R., Loreto, S., and M. Tüxen, "WebRTC Data Channel
+              Establishment Protocol", RFC 8832, DOI 10.17487/RFC8832,
+              January 2021, <https://www.rfc-editor.org/rfc/rfc8832>.
+
 Contributors
 
    Thank you to reviewers and contributors who helped to improve this
@@ -322,7 +341,7 @@ Contributors
    sets.  Thank you, Samant Kakarla and Huijun Xie from Dell
    Technologies, for your detailed review and corrections on boot
    process details.  Section 3 has been contributed by Rudy Bauer from
-   Dell as well and an author will be added on the next reveision.
+   Dell as well and an author will be added on the next revision.
 
 Authors' Addresses
 

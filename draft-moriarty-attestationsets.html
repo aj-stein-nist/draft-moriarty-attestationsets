@@ -12,11 +12,11 @@
        This document establishes an architectural pattern whereby a remote attestation could be issued for a complete set of benchmarks or controls that are defined and grouped by an external entity, preventing the need to send over individual attestations for each item within a benchmark or control framework.
 This document establishes a pattern to list sets of benchmarks and controls within CWT and JWT formats for use as an Entity Attestation Token (EAT). 
     " name="description">
-<meta content="xml2rfc 3.19.4" name="generator">
+<meta content="xml2rfc 3.20.0" name="generator">
 <meta content="draft-moriarty-attestationsets-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.19.4
-    Python 3.11.6
+  xml2rfc 3.20.0
+    Python 3.11.8
     ConfigArgParse 1.7
     google-i18n-address 3.1.0
     intervaltree 3.1.0
@@ -1031,7 +1031,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Moriarty, et al.</td>
-<td class="center">Expires 2 September 2024</td>
+<td class="center">Expires 4 September 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1044,12 +1044,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-moriarty-attestationsets-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-03-01" class="published">1 March 2024</time>
+<time datetime="2024-03-03" class="published">3 March 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-09-02">2 September 2024</time></dd>
+<dd class="expires"><time datetime="2024-09-04">4 September 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1108,7 +1108,7 @@ This document establishes a pattern to list sets of benchmarks and controls with
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 2 September 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 4 September 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1162,7 +1162,15 @@ This document establishes a pattern to list sets of benchmarks and controls with
             <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
-            <p id="section-toc.1-1.9.1"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+            <p id="section-toc.1-1.9.1"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-references" class="internal xref">References</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.1">
+                <p id="section-toc.1-1.9.2.1.1"><a href="#section-9.1" class="auto internal xref">9.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.2">
+                <p id="section-toc.1-1.9.2.2.1"><a href="#section-9.2" class="auto internal xref">9.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
             <p id="section-toc.1-1.10.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-contributors" class="internal xref">Contributors</a></p>
@@ -1187,24 +1195,23 @@ The measurement and policy sets may also be customized, but not necessary to ach
 This document describes a method to use existing attestation formats and protocols while allowing for defined profiles of policies, benchmarks, and measurements for specific assurance levels that scale to provide transparency to posture assessment results summarized with remote attestation.<a href="#section-1-1" class="pilcrow">¶</a></p>
 <p id="section-1-2">By way of example, the Center for Internet Security (CIS) hosts recommended configuration settings to secure operating systems, applications, and devices in CIS Benchmarks developed with industry experts.
 Attestations aligned to the CIS Benchmarks or other configuration guide such as a DISA STIG could be used to assert the configuration meets expectations.
-This has already been done for multiple platforms to demonstrate assurance for firmware according to NIST SP 800-193, Firmware Resiliency Guidelines.  In order to scale remote attestation, a single attestation for a set of Benchmarks or policies being met may be sent to the remote atteststaion management system.
+This has already been done for multiple platforms to demonstrate assurance for firmware according to NIST SP 800-193, Firmware Resiliency Guidelines <span>[<a href="#FIRMWARE" class="cite xref">FIRMWARE</a>]</span>.  In order to scale remote attestation, a single attestation for a set of benchmarks or policies being met may be sent to the remote attestation management system.
 On traditional servers, assurance to NIST SP 800-193 is provable through attestation from a root of trust (RoT), using the Trusted Computing Group (TCG) Trusted Platform Module (TPM) chip and attestation formats.<a href="#section-1-2" class="pilcrow">¶</a></p>
-<p id="section-1-3">At boot, policy and measurement expectations are verified against a set of "golden policies" from collected and attested evidence.  Device identity and measurements can also be attestated at runtime.  The attestations on evidence (e.g. hash of boot element) and verification of attestations are typically contained within a system and are limited to the control plane for
-management.
+<p id="section-1-3">At boot, policy and measurement expectations are verified against a set of "golden policies" from collected and attested evidence.  Device identity and measurements can also be attested at runtime.
+The attestations on evidence (e.g. hash of boot element) and verification of attestations are typically contained within a system and are limited to the control plane for management.
 The policy and measurement sets for comparison are protected to assure the result in the attestation verification process for boot element.
 Event logs and PCR values may be exposed to provide transparency into the verified attestations.  Remote attestation provides a summary of a local assessment of posture for managed systems and across various layers (operating system, application, containers) in each of these systems in a managed environment.<a href="#section-1-3" class="pilcrow">¶</a></p>
 <p id="section-1-4">There is a balance of exposure and evidence needed to assess posture when providing assurance of controls and system state.
 Currently, logs and TPM PCR values may be passed to provide assurance of verification of attestation evidence meeting set requirements.
 Providing the assurance can be accomplished with a remote attestation
 format such as the Entity Attestation Token (EAT) <span>[<a href="#I-D.ietf-rats-eat" class="cite xref">I-D.ietf-rats-eat</a>]</span>
-and a RESTful interface such as ROLIE or RedFish.
+and a RESTful interface such as ROLIE <span>[<a href="#RFC8832" class="cite xref">RFC8832</a>]</span> or RedFish <span>[<a href="#REDFISH" class="cite xref">REDFISH</a>]</span>.
 Policy definition blocks may be scoped to control measurement sets, where the EAT profile asserts compliance to the policy or measurement block specified and may include claims with the log and PCR value evidence.
 Measurement and Policy sets in an EAT profile may be published and
 maintained by separate entities (e.g.  CIS Benchmarks, DISA STIGs).
 The policy and measurement sets should be maintained separately even if associated with the same benchmark or control set.
 This avoids the need to transition the verifying entity to a remote system for individual policy and measurements which are performed locally for more immediate remediation as well as other functions.<a href="#section-1-4" class="pilcrow">¶</a></p>
-<p id="section-1-5">Examples of measurement and policy sets that could be defined in EAT
-profiles include, but are not limited to:<a href="#section-1-5" class="pilcrow">¶</a></p>
+<p id="section-1-5">Examples of measurement and policy sets that could be defined in EAT profiles include, but are not limited to:<a href="#section-1-5" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-1-6.1">
           <p id="section-1-6.1.1">Hardware attribute certificates, TCG<a href="#section-1-6.1.1" class="pilcrow">¶</a></p>
@@ -1344,9 +1351,9 @@ The configuration set could be the full attestation set to a Benchmark or a defi
       <h2 id="name-remediation">
 <a href="#section-6" class="section-number selfRef">6. </a><a href="#name-remediation" class="section-name selfRef">Remediation</a>
       </h2>
-<p id="section-6-1">If policy and configration settings or measurements attestated do not meet expected values, remediation is desireable.
-Automated remediation performed with alignment to zero trust architecture principles would require that the remeidation be performed prior to any relying component executing.
-The relying component would verifiy before continuing in a zero trust architecture.<a href="#section-6-1" class="pilcrow">¶</a></p>
+<p id="section-6-1">If policy and configuration settings or measurements attested do not meet expected values, remediation is desireable.
+Automated remediation performed with alignment to zero trust architecture principles would require that the remediation be performed prior to any relying component executing.
+The relying component would verify before continuing in a zero trust architecture.<a href="#section-6-1" class="pilcrow">¶</a></p>
 <p id="section-6-2">Ideally, remediation would occur on system as part of the process to attest to a set of attestations, similar to how attestation is performed for firmware in the boot process.
 If automated remediation is not possible, an alert should be generated to allow for notification of the variance from expected values.<a href="#section-6-2" class="pilcrow">¶</a></p>
 </section>
@@ -1372,35 +1379,61 @@ This will list the initial registration sets to the JWT and CWT registries if ad
 The registry will contain the names of the Benchmarks, Policy sets, DISA STIGS, controls, or other groupings of policy and measurements to map the standards document to a claim set for verification.<a href="#section-8-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="sec-normative-references">
 <section id="section-9">
-      <h2 id="name-normative-references">
-<a href="#section-9" class="section-number selfRef">9. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+      <h2 id="name-references">
+<a href="#section-9" class="section-number selfRef">9. </a><a href="#name-references" class="section-name selfRef">References</a>
       </h2>
+<div id="sec-normative-references">
+<section id="section-9.1">
+        <h3 id="name-normative-references">
+<a href="#section-9.1" class="section-number selfRef">9.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+        </h3>
 <dl class="references">
 <dt id="I-D.ietf-rats-eat">[I-D.ietf-rats-eat]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Lundblade, L.</span>, <span class="refAuthor">Mandyam, G.</span>, <span class="refAuthor">O'Donoghue, J.</span>, and <span class="refAuthor">C. Wallace</span>, <span class="refTitle">"The Entity Attestation Token (EAT)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-rats-eat-25</span>, <time datetime="2024-01-15" class="refDate">15 January 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-25">https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-25</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC2119">[RFC2119]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC7519">[RFC7519]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Jones, M.</span>, <span class="refAuthor">Bradley, J.</span>, and <span class="refAuthor">N. Sakimura</span>, <span class="refTitle">"JSON Web Token (JWT)"</span>, <span class="seriesInfo">RFC 7519</span>, <span class="seriesInfo">DOI 10.17487/RFC7519</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7519">https://www.rfc-editor.org/rfc/rfc7519</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8174">[RFC8174]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8392">[RFC8392]</dt>
-    <dd>
+      <dd>
 <span class="refAuthor">Jones, M.</span>, <span class="refAuthor">Wahlstroem, E.</span>, <span class="refAuthor">Erdtman, S.</span>, and <span class="refAuthor">H. Tschofenig</span>, <span class="refTitle">"CBOR Web Token (CWT)"</span>, <span class="seriesInfo">RFC 8392</span>, <span class="seriesInfo">DOI 10.17487/RFC8392</span>, <time datetime="2018-05" class="refDate">May 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8392">https://www.rfc-editor.org/rfc/rfc8392</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
 </div>
+<div id="sec-informative-references">
+<section id="section-9.2">
+        <h3 id="name-informative-references">
+<a href="#section-9.2" class="section-number selfRef">9.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
+        </h3>
+<dl class="references">
+<dt id="FIRMWARE">[FIRMWARE]</dt>
+        <dd>
+<span class="refAuthor">Regenscheid, A.</span>, <span class="refTitle">"Platform firmware resiliency guidelines"</span>, <span class="refContent">National Institute of Standards and Technology</span>, <span class="seriesInfo">DOI 10.6028/nist.sp.800-193</span>, <time datetime="2018-05" class="refDate">May 2018</time>, <span>&lt;<a href="https://doi.org/10.6028/nist.sp.800-193">https://doi.org/10.6028/nist.sp.800-193</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="REDFISH">[REDFISH]</dt>
+        <dd>
+<span class="refTitle">"Redfish Specification Version 1.20.0"</span>, <span>n.d.</span>, <span>&lt;<a href="https://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.20.0.pdf">https://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.20.0.pdf</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8832">[RFC8832]</dt>
+      <dd>
+<span class="refAuthor">Jesup, R.</span>, <span class="refAuthor">Loreto, S.</span>, and <span class="refAuthor">M. Tüxen</span>, <span class="refTitle">"WebRTC Data Channel Establishment Protocol"</span>, <span class="seriesInfo">RFC 8832</span>, <span class="seriesInfo">DOI 10.17487/RFC8832</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8832">https://www.rfc-editor.org/rfc/rfc8832</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+</dl>
+</section>
+</div>
+</section>
 <div id="contributors">
 <section id="appendix-A">
       <h2 id="name-contributors">
@@ -1409,7 +1442,7 @@ The registry will contain the names of the Benchmarks, Policy sets, DISA STIGS, 
 <p id="appendix-A-1">Thank you to reviewers and contributors who helped to improve this document.
 Thank you to Nick Grobelney, Dell Technologies, for your review and contribution to separate out the policy and measurement sets.
 Thank you, Samant Kakarla and Huijun Xie from Dell Technologies, for your detailed review and corrections on boot process details.
-Section 3 has been contributed by Rudy Bauer from Dell as well and an author will be added on the next reveision.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+Section 3 has been contributed by Rudy Bauer from Dell as well and an author will be added on the next revision.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="authors-addresses">
