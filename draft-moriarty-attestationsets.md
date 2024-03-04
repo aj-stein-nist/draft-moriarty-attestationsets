@@ -25,11 +25,7 @@ venue:
 author:
 - name: Kathleen M. Moriarty
   org: Self Employed
-  abbrev: 
   email: kathleen.Moriarty.ietf@gmail.com
-  street: 
-  code: 
-  city: 
   region: MA
   country: USA
 - name: Monty Wiseman
