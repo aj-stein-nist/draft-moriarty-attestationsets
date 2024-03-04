@@ -24,13 +24,13 @@ venue:
 
 author:
 - name: Kathleen M. Moriarty
-  org: Center for Internet Security
-  abbrev: CIS
+  org: Self Employed
+  abbrev: 
   email: kathleen.Moriarty.ietf@gmail.com
-  street: 31 Tech Valley Drive
-  code: '12061'
-  city: East Greenbush
-  region: NY
+  street: 
+  code: 
+  city: 
+  region: MA
   country: USA
 - name: Monty Wiseman
   org: Beyond Identity
@@ -95,7 +95,7 @@ Providing the assurance can be accomplished with a remote attestation
 format such as the Entity Attestation Token (EAT) [I-D.ietf-rats-eat]
 and a RESTful interface such as ROLIE [RFC8832] or RedFish [REDFISH].
 Policy definition blocks may be scoped to control measurement sets, where the EAT profile asserts compliance to the policy or measurement block specified and may include claims with the log and PCR value evidence.
-Measurement and Policy sets in an EAT profile may be published and
+Measurement and Policy sets, referenced in an EAT profile may be published and
 maintained by separate entities (e.g.  CIS Benchmarks, DISA STIGs).
 The policy and measurement sets should be maintained separately even if associated with the same benchmark or control set.
 This avoids the need to transition the verifying entity to a remote system for individual policy and measurements which are performed locally for more immediate remediation as well as other functions.
@@ -112,7 +112,7 @@ Examples of measurement and policy sets that could be defined in EAT profiles in
 Scale, ease of use, full automation, and consistency for customer consumption of a remote attestation function or service are essential toward the goal of consistently securing systems against known threats and vulnerabilities.
 Mitigations may be baked into policy.
 Claim sets of measurements and policy verified to meet or not meet Endorsed values [I-D.ietf-rats-eat] are conveyed in an Entity Attestation Token made available to a RESTful
-interface in aggregate for the systems managed.
+interface in aggregate for the systems managed. The Measurement or Policy Set may be registered in the IANA registry [created in this document], detailing the specific configuration policies and measurements required to adhere or prove compliance to the associated document. Levels (e.g. high, medium, low, 1, 2, 3) or vendor specific instances of the policy defined in code required to verify the policy and measurements would be registered using a name for the policy set, that would also be used in the reporting EAT that includes the MPS along with other artifacts to prove compliance.
 
 # Conventions and Definitions
 
@@ -121,9 +121,9 @@ interface in aggregate for the systems managed.
 # Policy and Measurement Set Definitions
 
 This document defines EAT claims in the JWT [RFC7519] and CWT [RFC8392] registries to provide attestation to a set of verified claims within a defined grouping.
-The trustworthiness will be conveyed on original verified evidence as well as the attestation on the grouping.
+The trustworthiness will be conveyed on original verified evidence as well as the attestation on the grouping. The claims provide the additional information needed for an EAT to convey complaince to a defined policy or measurement set to a system or application collecting evidence on policy and measurement assurance, for instance a governance, risk, and complaince (GRC) system.
 
-| Claim | Long Name                  | Description                      | Format |
+| Claim | Long Name                  | Claim Description                | Format |
 |-------|----------------------------|----------------------------------|--------|
 | MPS   | Measurement or Policy Set  | Name for the MPS                 |        |
 | LEM   | Log Evidence of MPS        | Log File or URI                  |        |
@@ -155,7 +155,7 @@ In some cases, it may be difficult to attest to configuration settings for the i
 The use of an expected hash value for configuration settings can be used to compare the attested configuration set.
 In this case, the creator of the attestation verification measurements would define a set of values for which a message digest would be created and then signed by the attestor.
 The expected measurements would include the expected hash value for comparison.
-The configuration set could be the full attestation set to a Benchmark or a defined subset.
+The configuration set could be the full attestation set to a Benchmark or a defined subset. These configuration sets can be registered for general use to reduce the need to replicate the policy and measurement assessments by others aiming to assure at the same level for a benchmark or hardening guide. This document creates an IANA registry for this purpose, creating consistency between automated policy and measurement set levels and the systems used to collect and report aggregate views for an organization across systems and applications, such as a GRC platform.
 
 # Remediation
 
@@ -175,9 +175,45 @@ This document does not add security consideration over what has been described i
 
 # IANA Considerations
 
-This memo includes no request to IANA, yet.
-This will list the initial registration sets to the JWT and CWT registries if adopted.
-The registry will contain the names of the Benchmarks, Policy sets, DISA STIGS, controls, or other groupings of policy and measurements to map the standards document to a claim set for verification.
+Draft section - authors know more work is needed to properly define the registry and claims. This section is here now to assist in understandign the concepts.
+
+This document requests the creation of a Measurement and Policy Set (MPS) registry. The MPS registry will contain the names of the Benchmarks, Policy sets, DISA STIGS, controls, or other groupings as a  policy and measurement set that MAY correlate to standards documents containing assurance guidelines, compliance requireemnts, or other defined claim sets for verification of posture assessment to that MPS. The MPS registry will include the policy definition for specific levels of MPS assurance to enable interoperability between assertions of compliance (or lack thereof) and reporting systems.
+
+| MPS Name      | MPS Description                         | File with MPS definition     |
+|---------------|-----------------------------------------|------------------------------|
+| Ubuntu-CIS-L1 | Ubuntu CIS Benchmark, level 1 assurance | http://   /Ubuntu-CIS-L1.txt |
+
+The MPS name includes versions or level information, allowing for distinct policy or measurement sets and definitions of those sets (including the supporting formats used to write the definitions).
+
+## Additions to the JWT and CWT registries requested
+
+This document requests the following JWT claims per the specification requirement required for the JSON Web Token (JWT) registry defined in RFC7519.
+
+| Claim | Long Name                  | Claim Description                | 
+|-------|----------------------------|----------------------------------|
+| MPS   | Measurement or Policy Set  | Name for the MPS                 |
+| LEM   | Log Evidence of MPS        | Log File or URI                  |  
+| PCR   | TPM PCR Values             | URI                              |  
+| FMA   | Format of MPS Attestations | Format of included attestations  |  
+| HSH   | Hash Value/Message Digest  | Hash value of claim-set          | 
+
+
+## "mps" (Measurement or Policy Set) Claim
+
+The "mps" (Measurement or Policy Set) claim identifies the policy and measurement set being reported. The MPS MAY be registered to the [MPS] IANA registry. The MPS may be specified to specific levels of assurance to hardening, loosening guides or benchmarks to provide interoperability in reporting. The processing of this claim is generally application specific.
+   The "mps" value is a case-sensitive string containing a StringOrURI
+   value.  Use of this claim is OPTIONAL.
+
+This document requests the following CWT claims per the specification requirement required for the CBOR Web Token (CWT) registry defined in RFC8392.
+
+| Claim | Long Name                  | Claim Description                | JWT Claim Name |
+|-------|----------------------------|----------------------------------|----------------|
+| MPS   | Measurement or Policy Set  | Name for the MPS                 | MPS            |
+| LEM   | Log Evidence of MPS        | Log File or URI                  | LEM            |
+| PCR   | TPM PCR Values             | URI                              | PCR            |
+| FMA   | Format of MPS Attestations | Format of included attestations  | FMA            |
+| HSH   | Hash Value/Message Digest  | Hash value of claim-set          | HSH            |
+
 
 --- back
 
@@ -188,3 +224,4 @@ Thank you to reviewers and contributors who helped to improve this document.
 Thank you to Nick Grobelney, Dell Technologies, for your review and contribution to separate out the policy and measurement sets.
 Thank you, Samant Kakarla and Huijun Xie from Dell Technologies, for your detailed review and corrections on boot process details.
 Section 3 has been contributed by Rudy Bauer from Dell as well and an author will be added on the next revision.
+IANA section added in version 7 by Kathleen Moriarty, expanding the claims registered and adding a proposed registry to define policy and measurement sets.
