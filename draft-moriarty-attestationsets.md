@@ -194,10 +194,10 @@ This document requests the following JWT claims per the specification requiremen
 | HSH   | Hash Value/Message Digest  | Hash value of claim-set          | 
 
 
-## "mps" (Measurement or Policy Set) Claim
+## MPS (Measurement or Policy Set) Claim
 
-The "mps" (Measurement or Policy Set) claim identifies the policy and measurement set being reported. The MPS MAY be registered to the [MPS] IANA registry. The MPS may be specified to specific levels of assurance to hardening, loosening guides or benchmarks to provide interoperability in reporting. The processing of this claim is generally application specific.
-   The "mps" value is a case-sensitive string containing a StringOrURI
+The MPS (Measurement or Policy Set) claim identifies the policy and measurement set being reported. The MPS MAY be registered to the MPS IANA registry. The MPS may be specified to specific levels of assurance to hardening, loosening guides or benchmarks to provide interoperability in reporting. The processing of this claim is generally application specific.
+   The MPS value is a case-sensitive string containing a StringOrURI
    value.  Use of this claim is OPTIONAL.
 
 This document requests the following CWT claims per the specification requirement required for the CBOR Web Token (CWT) registry defined in RFC8392.
