@@ -108,7 +108,7 @@ Examples of measurement and policy sets that could be defined in EAT profiles in
 Scale, ease of use, full automation, and consistency for customer consumption of a remote attestation function or service are essential toward the goal of consistently securing systems against known threats and vulnerabilities.
 Mitigations may be baked into policy.
 Claim sets of measurements and policy verified to meet or not meet Endorsed values [I-D.ietf-rats-eat] are conveyed in an Entity Attestation Token made available to a RESTful
-interface in aggregate for the systems managed. The Measurement or Policy Set may be registered in the IANA registry [created in this document], detailing the specific configuration policies and measurements required to adhere or prove compliance to the associated document. Levels (e.g. high, medium, low, 1, 2, 3) or vendor specific instances of the policy defined in code required to verify the policy and measurements would be registered using a name for the policy set, that would also be used in the reporting EAT that includes the MPS along with other artifacts to prove compliance.
+interface in aggregate for the systems managed. The Measurement or Policy Set may be registered in the IANA registry [created in this document](#iana), detailing the specific configuration policies and measurements required to adhere or prove compliance to the associated document. Levels (e.g. high, medium, low, 1, 2, 3) or vendor specific instances of the policy defined in code required to verify the policy and measurements would be registered using a name for the policy set, that would also be used in the reporting EAT that includes the MPS along with other artifacts to prove compliance.
 
 # Conventions and Definitions
 
@@ -169,7 +169,7 @@ The contents of the benchmarks and controls are out of scope for this document.
 This establishes an architectural pattern whereby a remote attestation could be issued for a complete set of benchmarks or controls as defined and grouped by external entities, preventing the need to send over individual attestations for each item within a benchmark or control framework.
 This document does not add security consideration over what has been described in the EAT, JWT, or CWT specifications.
 
-# IANA Considerations
+# IANA Considerations {#iana}
 
 Draft section - authors know more work is needed to properly define the registry and claims. This section is here now to assist in understandign the concepts.
 
