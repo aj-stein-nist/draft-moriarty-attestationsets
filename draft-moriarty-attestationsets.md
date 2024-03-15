@@ -117,7 +117,7 @@ interface in aggregate for the systems managed. The Measurement or Policy Set ma
 # Policy and Measurement Set Definitions
 
 This document defines EAT claims in the JWT [RFC7519] and CWT [RFC8392] registries to provide attestation to a set of verified claims within a defined grouping.
-The trustworthiness will be conveyed on original verified evidence as well as the attestation on the grouping. The claims provide the additional information needed for an EAT to convey complaince to a defined policy or measurement set to a system or application collecting evidence on policy and measurement assurance, for instance a governance, risk, and complaince (GRC) system.
+The trustworthiness will be conveyed on original verified evidence as well as the attestation on the grouping. The claims provide the additional information needed for an EAT to convey compliance to a defined policy or measurement set to a system or application collecting evidence on policy and measurement assurance, for instance a governance, risk, and compliance (GRC) system.
 
 | Claim | Long Name                  | Claim Description                | Format |
 |-------|----------------------------|----------------------------------|--------|
@@ -171,9 +171,9 @@ This document does not add security consideration over what has been described i
 
 # IANA Considerations {#iana}
 
-Draft section - authors know more work is needed to properly define the registry and claims. This section is here now to assist in understandign the concepts.
+Draft section - authors know more work is needed to properly define the registry and claims. This section is here now to assist in understanding the concepts.
 
-This document requests the creation of a Measurement and Policy Set (MPS) registry. The MPS registry will contain the names of the Benchmarks, Policy sets, DISA STIGS, controls, or other groupings as a  policy and measurement set that MAY correlate to standards documents containing assurance guidelines, compliance requireemnts, or other defined claim sets for verification of posture assessment to that MPS. The MPS registry will include the policy definition for specific levels of MPS assurance to enable interoperability between assertions of compliance (or lack thereof) and reporting systems.
+This document requests the creation of a Measurement and Policy Set (MPS) registry. The MPS registry will contain the names of the Benchmarks, Policy sets, DISA STIGS, controls, or other groupings as a  policy and measurement set that MAY correlate to standards documents containing assurance guidelines, compliance requirements, or other defined claim sets for verification of posture assessment to that MPS. The MPS registry will include the policy definition for specific levels of MPS assurance to enable interoperability between assertions of compliance (or lack thereof) and reporting systems.
 
 | MPS Name      | MPS Description                         | File with MPS definition     |
 |---------------|-----------------------------------------|------------------------------|
