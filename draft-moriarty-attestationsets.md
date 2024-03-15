@@ -185,13 +185,13 @@ The MPS name includes versions or level information, allowing for distinct polic
 
 This document requests the following JWT claims per the specification requirement required for the JSON Web Token (JWT) registry defined in RFC7519.
 
-| Claim | Long Name                  | Claim Description                | 
+| Claim | Long Name                  | Claim Description                |
 |-------|----------------------------|----------------------------------|
 | MPS   | Measurement or Policy Set  | Name for the MPS                 |
-| LEM   | Log Evidence of MPS        | Log File or URI                  |  
-| PCR   | TPM PCR Values             | URI                              |  
-| FMA   | Format of MPS Attestations | Format of included attestations  |  
-| HSH   | Hash Value/Message Digest  | Hash value of claim-set          | 
+| LEM   | Log Evidence of MPS        | Log File or URI                  |
+| PCR   | TPM PCR Values             | URI                              |
+| FMA   | Format of MPS Attestations | Format of included attestations  |
+| HSH   | Hash Value/Message Digest  | Hash value of claim-set          |
 
 
 ## MPS (Measurement or Policy Set) Claim
