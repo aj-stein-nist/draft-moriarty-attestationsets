@@ -108,7 +108,7 @@ Examples of measurement and policy sets that could be defined in EAT profiles in
 Scale, ease of use, full automation, and consistency for customer consumption of a remote attestation function or service are essential toward the goal of consistently securing systems against known threats and vulnerabilities.
 Mitigations may be baked into policy.
 Claim sets of measurements and policy verified to meet or not meet Endorsed values [I-D.ietf-rats-eat] are conveyed in an Entity Attestation Token made available to a RESTful
-interface in aggregate for the systems managed. The Measurement or Policy Set may be registered in the IANA registry [created in this document], detailing the specific configuration policies and measurements required to adhere or prove compliance to the associated document. Levels (e.g. high, medium, low, 1, 2, 3) or vendor specific instances of the policy defined in code required to verify the policy and measurements would be registered using a name for the policy set, that would also be used in the reporting EAT that includes the MPS along with other artifacts to prove compliance.
+interface in aggregate for the systems managed. The Measurement or Policy Set may be registered in the IANA registry [created in this document](#iana), detailing the specific configuration policies and measurements required to adhere or prove compliance to the associated document. Levels (e.g. high, medium, low, 1, 2, 3) or vendor specific instances of the policy defined in code required to verify the policy and measurements would be registered using a name for the policy set, that would also be used in the reporting EAT that includes the MPS along with other artifacts to prove compliance.
 
 # Conventions and Definitions
 
@@ -117,7 +117,7 @@ interface in aggregate for the systems managed. The Measurement or Policy Set ma
 # Policy and Measurement Set Definitions
 
 This document defines EAT claims in the JWT [RFC7519] and CWT [RFC8392] registries to provide attestation to a set of verified claims within a defined grouping.
-The trustworthiness will be conveyed on original verified evidence as well as the attestation on the grouping. The claims provide the additional information needed for an EAT to convey complaince to a defined policy or measurement set to a system or application collecting evidence on policy and measurement assurance, for instance a governance, risk, and complaince (GRC) system.
+The trustworthiness will be conveyed on original verified evidence as well as the attestation on the grouping. The claims provide the additional information needed for an EAT to convey compliance to a defined policy or measurement set to a system or application collecting evidence on policy and measurement assurance, for instance a governance, risk, and compliance (GRC) system.
 
 | Claim | Long Name                  | Claim Description                | Format |
 |-------|----------------------------|----------------------------------|--------|
@@ -169,11 +169,11 @@ The contents of the benchmarks and controls are out of scope for this document.
 This establishes an architectural pattern whereby a remote attestation could be issued for a complete set of benchmarks or controls as defined and grouped by external entities, preventing the need to send over individual attestations for each item within a benchmark or control framework.
 This document does not add security consideration over what has been described in the EAT, JWT, or CWT specifications.
 
-# IANA Considerations
+# IANA Considerations {#iana}
 
-Draft section - authors know more work is needed to properly define the registry and claims. This section is here now to assist in understandign the concepts.
+Draft section - authors know more work is needed to properly define the registry and claims. This section is here now to assist in understanding the concepts.
 
-This document requests the creation of a Measurement and Policy Set (MPS) registry. The MPS registry will contain the names of the Benchmarks, Policy sets, DISA STIGS, controls, or other groupings as a  policy and measurement set that MAY correlate to standards documents containing assurance guidelines, compliance requireemnts, or other defined claim sets for verification of posture assessment to that MPS. The MPS registry will include the policy definition for specific levels of MPS assurance to enable interoperability between assertions of compliance (or lack thereof) and reporting systems.
+This document requests the creation of a Measurement and Policy Set (MPS) registry. The MPS registry will contain the names of the Benchmarks, Policy sets, DISA STIGS, controls, or other groupings as a  policy and measurement set that MAY correlate to standards documents containing assurance guidelines, compliance requirements, or other defined claim sets for verification of posture assessment to that MPS. The MPS registry will include the policy definition for specific levels of MPS assurance to enable interoperability between assertions of compliance (or lack thereof) and reporting systems.
 
 | MPS Name      | MPS Description                         | File with MPS definition     |
 |---------------|-----------------------------------------|------------------------------|
@@ -185,13 +185,13 @@ The MPS name includes versions or level information, allowing for distinct polic
 
 This document requests the following JWT claims per the specification requirement required for the JSON Web Token (JWT) registry defined in RFC7519.
 
-| Claim | Long Name                  | Claim Description                | 
+| Claim | Long Name                  | Claim Description                |
 |-------|----------------------------|----------------------------------|
 | MPS   | Measurement or Policy Set  | Name for the MPS                 |
-| LEM   | Log Evidence of MPS        | Log File or URI                  |  
-| PCR   | TPM PCR Values             | URI                              |  
-| FMA   | Format of MPS Attestations | Format of included attestations  |  
-| HSH   | Hash Value/Message Digest  | Hash value of claim-set          | 
+| LEM   | Log Evidence of MPS        | Log File or URI                  |
+| PCR   | TPM PCR Values             | URI                              |
+| FMA   | Format of MPS Attestations | Format of included attestations  |
+| HSH   | Hash Value/Message Digest  | Hash value of claim-set          |
 
 
 ## MPS (Measurement or Policy Set) Claim
