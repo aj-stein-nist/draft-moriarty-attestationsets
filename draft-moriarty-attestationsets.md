@@ -24,7 +24,7 @@ venue:
 
 author:
 - name: Kathleen M. Moriarty
-  org: Self Employed
+  org: Transforming Information Security LLC
   email: kathleen.Moriarty.ietf@gmail.com
   region: MA
   country: USA
@@ -69,25 +69,25 @@ This document establishes a pattern to list sets of benchmarks and controls with
 # Introduction
 
 Posture assessment has long been desired, but has been difficult to achieve due to complexities of customization requirements at each organization.
-By using policy and measurement sets that may be offered at various assurance levels defined in an Entity Attestation Token (EAT) profile [I-D.ietf-rats-eat], automating posture assessment through attestation becomes achievable for organizations of all sizes.
-The measurement and policy groupings in an EAT profile may be provided by the vendor or by a neutral third party to enable ease of use and consistent implementations.
+By using policy and measurement sets that may be offered at various assurance levels, local assessment of evidence can be performed to continuousy assess compliance. An example of a form of local attestation is through the Trusted Computing Group's Trusted Platform Module (TPM) format and assessment method. This and other methods provide a secured log for transparency on the results of the assessed evidence against expacted values. In order to support continuous monitoring of posture assessment and integrity in an enterprise or large data center, the local assessments and remediation are useful to reduce load on the network and remote resources. This is currently done today for the so called trusted boot process. It is useful to share the results of the compliance to expected values for measurements and policies in order to gain a bigger picture view of the governance, risk, and complaince posture for a network. As such, communiciating a summary result as evidence tied including a link to supporting logs with a remote attestation defined in an Entity Attestation Token (EAT) profile [I-D.ietf-rats-eat] provides a way to accomplish that goal. The level of intergation for local attestation meeting defined policies and measurements at specific levels, including the ability to remediate makes posture assessment through attestation achievable for organizations of all sizes due to integration being required in existing toolsets and systems, built as an intrinsic capability.
+The measurement and policy groupings results summarized in an EAT profile may be provided by the vendor or by a neutral third party to enable ease of use and consistent implementations. The local system or server host performs the assessment of posture and remediation.
 This provides simpler options to enable posture assessment at selected levels by organizations without the need to have in-house expertise.
 The measurement and policy sets may also be customized, but not necessary to achieve posture assessment to predefined options.
-This document describes a method to use existing attestation formats and protocols while allowing for defined profiles of policies, benchmarks, and measurements for specific assurance levels that scale to provide transparency to posture assessment results summarized with remote attestation.
+This document describes a method to use existing attestation formats and protocols while allowing for defined profiles of policies, benchmarks, and measurements for specific assurance levels to provide transparency on posture assessment results summarized with remote attestations.
 
 By way of example, the Center for Internet Security (CIS) hosts recommended configuration settings to secure operating systems, applications, and devices in CIS Benchmarks developed with industry experts.
 Attestations aligned to the CIS Benchmarks or other configuration guide such as a DISA STIG could be used to assert the configuration meets expectations.
-This has already been done for multiple platforms to demonstrate assurance for firmware according to NIST SP 800-193, Firmware Resiliency Guidelines [FIRMWARE].  In order to scale remote attestation, a single attestation for a set of benchmarks or policies being met may be sent to the remote attestation management system.
-On traditional servers, assurance to NIST SP 800-193 is provable through attestation from a root of trust (RoT), using the Trusted Computing Group (TCG) Trusted Platform Module (TPM) chip and attestation formats.
+This has already been done for multiple platforms to demonstrate assurance for firmware according to NIST SP 800-193, Firmware Resiliency Guidelines [FIRMWARE].  In order to scale remote attestation, a single attestation for a set of benchmarks or policies being met with a link to the verification logs from the local assessments, is the evidence that may be sent to the verifier and then the relying party.
+On traditional servers, assurance to NIST SP 800-193 is provable through attestation from a root of trust (RoT), using the Trusted Computing Group (TCG) Trusted Platform Module (TPM) chip and attestation formats. However, this remains local and one knows the policies and measurements have been met if other functions that rely on the assurance are running. 
 
-At boot, policy and measurement expectations are verified against a set of "golden policies" from collected and attested evidence.  Device identity and measurements can also be attested at runtime.
+At boot, policy and measurement expectations are verified against a set of "golden policies" from collected evidence and are verified to meet expected values.  Device identity and measurements can also be attested at runtime.
 The attestations on evidence (e.g. hash of boot element) and verification of attestations are typically contained within a system and are limited to the control plane for management.
 The policy and measurement sets for comparison are protected to assure the result in the attestation verification process for boot element.
-Event logs and PCR values may be exposed to provide transparency into the verified attestations.  Remote attestation provides a summary of a local assessment of posture for managed systems and across various layers (operating system, application, containers) in each of these systems in a managed environment.
+Event logs and PCR values may be exposed to provide transparency into the verified attestations.  The remote attestation defined in this document provides a summary of a local assessment of posture for managed systems and across various layers (operating system, application, containers) in each of these systems in a managed environment as evidence. The Relying Party uses the verified evidence to under stand posture of interconnected operating systems, applications, and systems that are communicated in summary results.
 
 There is a balance of exposure and evidence needed to assess posture when providing assurance of controls and system state.
-Currently, logs and TPM PCR values may be passed to provide assurance of verification of attestation evidence meeting set requirements.
-Providing the assurance can be accomplished with a remote attestation
+Currently, if using the TPM, logs and TPM PCR values may be passed to provide assurance of verification of attestation evidence meeting set requirements.
+Providing the set of evidence as assurance to a policy set can be accomplished with a remote attestation
 format such as the Entity Attestation Token (EAT) [I-D.ietf-rats-eat]
 and a RESTful interface such as ROLIE [RFC8832] or RedFish [REDFISH].
 Policy definition blocks may be scoped to control measurement sets, where the EAT profile asserts compliance to the policy or measurement block specified and may include claims with the log and PCR value evidence.
@@ -108,7 +108,7 @@ Examples of measurement and policy sets that could be defined in EAT profiles in
 Scale, ease of use, full automation, and consistency for customer consumption of a remote attestation function or service are essential toward the goal of consistently securing systems against known threats and vulnerabilities.
 Mitigations may be baked into policy.
 Claim sets of measurements and policy verified to meet or not meet Endorsed values [I-D.ietf-rats-eat] are conveyed in an Entity Attestation Token made available to a RESTful
-interface in aggregate for the systems managed. The Measurement or Policy Set may be registered in the IANA registry [created in this document](#iana), detailing the specific configuration policies and measurements required to adhere or prove compliance to the associated document. Levels (e.g. high, medium, low, 1, 2, 3) or vendor specific instances of the policy defined in code required to verify the policy and measurements would be registered using a name for the policy set, that would also be used in the reporting EAT that includes the MPS along with other artifacts to prove compliance.
+interface in aggregate for the systems managed as evidence for the remote attestation. The Measurement or Policy Set may be registered in the IANA registry [created in this document](#iana), detailing the specific configuration policies and measurements required to adhere or prove compliance to the associated document to enable interoperability. Levels (e.g. high, medium, low, 1, 2, 3) or vendor specific instances of the policy defined in code required to verify the policy and measurements would be registered using a name for the policy set, that would also be used in the reporting EAT that includes the MPS along with other artifacts to prove compliance.
 
 # Conventions and Definitions
 
