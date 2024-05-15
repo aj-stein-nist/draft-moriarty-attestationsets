@@ -3,16 +3,16 @@
 
 
 Network Working Group                                     K. M. Moriarty
-Internet-Draft                                                       CIS
+Internet-Draft                     Transforming Information Security LLC
 Intended status: Standards Track                              M. Wiseman
-Expires: 4 September 2024                                Beyond Identity
+Expires: 16 November 2024                                Beyond Identity
                                                               A.J. Stein
                                                                     NIST
-                                                            3 March 2024
+                                                             15 May 2024
 
 
  Scalable Remote Attestation for Systems, Containers, and Applications
-                 draft-moriarty-attestationsets-latest
+             draft-moriarty-rats-posture-assessment-latest
 
 Abstract
 
@@ -28,11 +28,11 @@ About This Document
 
    This note is to be removed before publishing as an RFC.
 
-   The latest revision of this draft can be found at https://aj-stein-
-   nist.github.io/draft-moriarty-attestationsets/draft-moriarty-
+   The latest revision of this draft can be found at
+   https://kme.github.io/draft-moriarty-attestationsets/draft-moriarty-
    attestationsets.html.  Status information for this document may be
-   found at https://datatracker.ietf.org/doc/draft-moriarty-
-   attestationsets/.
+   found at https://datatracker.ietf.org/doc/draft-moriarty-rats-
+   posture-assessment/.
 
    Discussion of this document takes place on the Remote ATtestation
    ProcedureS (rats) Working Group mailing list (mailto:rats@ietf.org),
@@ -40,7 +40,7 @@ About This Document
    Subscribe at https://www.ietf.org/mailman/listinfo/rats/.
 
    Source for this draft and an issue tracker can be found at
-   https://github.com/aj-stein-nist/draft-moriarty-attestationsets.
+   https://github.com/kme/draft-moriarty-attestationsets.
 
 Status of This Memo
 
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 4 September 2024.
+   This Internet-Draft will expire on 16 November 2024.
 
 Copyright Notice
 
@@ -83,6 +83,8 @@ Table of Contents
    6.  Remediation
    7.  Security Considerations
    8.  IANA Considerations
+     8.1.  Additions to the JWT and CWT registries requested
+     8.2.  MPS (Measurement or Policy Set) Claim
    9.  References
      9.1.  Normative References
      9.2.  Informative References
@@ -94,21 +96,41 @@ Table of Contents
    Posture assessment has long been desired, but has been difficult to
    achieve due to complexities of customization requirements at each
    organization.  By using policy and measurement sets that may be
-   offered at various assurance levels defined in an Entity Attestation
-   Token (EAT) profile [I-D.ietf-rats-eat], automating posture
-   assessment through attestation becomes achievable for organizations
-   of all sizes.  The measurement and policy groupings in an EAT profile
+   offered at various assurance levels, local assessment of evidence can
+   be performed to continuousy assess compliance.  An example of a form
+   of local attestation is through the Trusted Computing Group's Trusted
+   Platform Module (TPM) format and assessment method.  This and other
+   methods provide a secured log for transparency on the results of the
+   assessed evidence against expacted values.  In order to support
+   continuous monitoring of posture assessment and integrity in an
+   enterprise or large data center, the local assessments and
+   remediation are useful to reduce load on the network and remote
+   resources.  This is currently done today for the so called trusted
+   boot process.  It is useful to share the results of the compliance to
+   expected values for measurements and policies in order to gain a
+   bigger picture view of the governance, risk, and complaince posture
+   for a network.  As such, communiciating a summary result as evidence
+   tied including a link to supporting logs with a remote attestation
+   defined in an Entity Attestation Token (EAT) profile
+   [I-D.ietf-rats-eat] provides a way to accomplish that goal.  The
+   level of intergation for local attestation meeting defined policies
+   and measurements at specific levels, including the ability to
+   remediate makes posture assessment through attestation achievable for
+   organizations of all sizes due to integration being required in
+   existing toolsets and systems, built as an intrinsic capability.  The
+   measurement and policy groupings results summarized in an EAT profile
    may be provided by the vendor or by a neutral third party to enable
-   ease of use and consistent implementations.  This provides simpler
-   options to enable posture assessment at selected levels by
-   organizations without the need to have in-house expertise.  The
-   measurement and policy sets may also be customized, but not necessary
-   to achieve posture assessment to predefined options.  This document
-   describes a method to use existing attestation formats and protocols
-   while allowing for defined profiles of policies, benchmarks, and
-   measurements for specific assurance levels that scale to provide
-   transparency to posture assessment results summarized with remote
-   attestation.
+   ease of use and consistent implementations.  The local system or
+   server host performs the assessment of posture and remediation.  This
+   provides simpler options to enable posture assessment at selected
+   levels by organizations without the need to have in-house expertise.
+   The measurement and policy sets may also be customized, but not
+   necessary to achieve posture assessment to predefined options.  This
+   document describes a method to use existing attestation formats and
+   protocols while allowing for defined profiles of policies,
+   benchmarks, and measurements for specific assurance levels to provide
+   transparency on posture assessment results summarized with remote
+   attestations.
 
    By way of example, the Center for Internet Security (CIS) hosts
    recommended configuration settings to secure operating systems,
@@ -119,37 +141,44 @@ Table of Contents
    multiple platforms to demonstrate assurance for firmware according to
    NIST SP 800-193, Firmware Resiliency Guidelines [FIRMWARE].  In order
    to scale remote attestation, a single attestation for a set of
-   benchmarks or policies being met may be sent to the remote
-   attestation management system.  On traditional servers, assurance to
-   NIST SP 800-193 is provable through attestation from a root of trust
-   (RoT), using the Trusted Computing Group (TCG) Trusted Platform
-   Module (TPM) chip and attestation formats.
+   benchmarks or policies being met with a link to the verification logs
+   from the local assessments, is the evidence that may be sent to the
+   verifier and then the relying party.  On traditional servers,
+   assurance to NIST SP 800-193 is provable through attestation from a
+   root of trust (RoT), using the Trusted Computing Group (TCG) Trusted
+   Platform Module (TPM) chip and attestation formats.  However, this
+   remains local and one knows the policies and measurements have been
+   met if other functions that rely on the assurance are running.
 
    At boot, policy and measurement expectations are verified against a
-   set of "golden policies" from collected and attested evidence.
-   Device identity and measurements can also be attested at runtime.
-   The attestations on evidence (e.g. hash of boot element) and
-   verification of attestations are typically contained within a system
-   and are limited to the control plane for management.  The policy and
-   measurement sets for comparison are protected to assure the result in
-   the attestation verification process for boot element.  Event logs
-   and PCR values may be exposed to provide transparency into the
-   verified attestations.  Remote attestation provides a summary of a
-   local assessment of posture for managed systems and across various
-   layers (operating system, application, containers) in each of these
-   systems in a managed environment.
+   set of "golden policies" from collected evidence and are verified to
+   meet expected values.  Device identity and measurements can also be
+   attested at runtime.  The attestations on evidence (e.g. hash of boot
+   element) and verification of attestations are typically contained
+   within a system and are limited to the control plane for management.
+   The policy and measurement sets for comparison are protected to
+   assure the result in the attestation verification process for boot
+   element.  Event logs and PCR values may be exposed to provide
+   transparency into the verified attestations.  The remote attestation
+   defined in this document provides a summary of a local assessment of
+   posture for managed systems and across various layers (operating
+   system, application, containers) in each of these systems in a
+   managed environment as evidence.  The Relying Party uses the verified
+   evidence to under stand posture of interconnected operating systems,
+   applications, and systems that are communicated in summary results.
 
    There is a balance of exposure and evidence needed to assess posture
-   when providing assurance of controls and system state.  Currently,
-   logs and TPM PCR values may be passed to provide assurance of
-   verification of attestation evidence meeting set requirements.
-   Providing the assurance can be accomplished with a remote attestation
-   format such as the Entity Attestation Token (EAT) [I-D.ietf-rats-eat]
-   and a RESTful interface such as ROLIE [RFC8832] or RedFish [REDFISH].
-   Policy definition blocks may be scoped to control measurement sets,
-   where the EAT profile asserts compliance to the policy or measurement
-   block specified and may include claims with the log and PCR value
-   evidence.  Measurement and Policy sets in an EAT profile may be
+   when providing assurance of controls and system state.  Currently, if
+   using the TPM, logs and TPM PCR values may be passed to provide
+   assurance of verification of attestation evidence meeting set
+   requirements.  Providing the set of evidence as assurance to a policy
+   set can be accomplished with a remote attestation format such as the
+   Entity Attestation Token (EAT) [I-D.ietf-rats-eat] and a RESTful
+   interface such as ROLIE [RFC8832] or RedFish [REDFISH].  Policy
+   definition blocks may be scoped to control measurement sets, where
+   the EAT profile asserts compliance to the policy or measurement block
+   specified and may include claims with the log and PCR value evidence.
+   Measurement and Policy sets, referenced in an EAT profile may be
    published and maintained by separate entities (e.g.  CIS Benchmarks,
    DISA STIGs).  The policy and measurement sets should be maintained
    separately even if associated with the same benchmark or control set.
@@ -180,7 +209,16 @@ Table of Contents
    Claim sets of measurements and policy verified to meet or not meet
    Endorsed values [I-D.ietf-rats-eat] are conveyed in an Entity
    Attestation Token made available to a RESTful interface in aggregate
-   for the systems managed.
+   for the systems managed as evidence for the remote attestation.  The
+   Measurement or Policy Set may be registered in the IANA registry
+   created in this document (Section 8), detailing the specific
+   configuration policies and measurements required to adhere or prove
+   compliance to the associated document to enable interoperability.
+   Levels (e.g. high, medium, low, 1, 2, 3) or vendor specific instances
+   of the policy defined in code required to verify the policy and
+   measurements would be registered using a name for the policy set,
+   that would also be used in the reporting EAT that includes the MPS
+   along with other artifacts to prove compliance.
 
 2.  Conventions and Definitions
 
@@ -196,10 +234,14 @@ Table of Contents
    [RFC8392] registries to provide attestation to a set of verified
    claims within a defined grouping.  The trustworthiness will be
    conveyed on original verified evidence as well as the attestation on
-   the grouping.
+   the grouping.  The claims provide the additional information needed
+   for an EAT to convey compliance to a defined policy or measurement
+   set to a system or application collecting evidence on policy and
+   measurement assurance, for instance a governance, risk, and
+   compliance (GRC) system.
 
    +=======+============================+====================+========+
-   | Claim | Long Name                  | Description        | Format |
+   | Claim | Long Name                  | Claim Description  | Format |
    +=======+============================+====================+========+
    | MPS   | Measurement or Policy Set  | Name for the MPS   |        |
    +-------+----------------------------+--------------------+--------+
@@ -253,7 +295,14 @@ Table of Contents
    created and then signed by the attestor.  The expected measurements
    would include the expected hash value for comparison.  The
    configuration set could be the full attestation set to a Benchmark or
-   a defined subset.
+   a defined subset.  These configuration sets can be registered for
+   general use to reduce the need to replicate the policy and
+   measurement assessments by others aiming to assure at the same level
+   for a benchmark or hardening guide.  This document creates an IANA
+   registry for this purpose, creating consistency between automated
+   policy and measurement set levels and the systems used to collect and
+   report aggregate views for an organization across systems and
+   applications, such as a GRC platform.
 
 6.  Remediation
 
@@ -284,11 +333,91 @@ Table of Contents
 
 8.  IANA Considerations
 
-   This memo includes no request to IANA, yet.  This will list the
-   initial registration sets to the JWT and CWT registries if adopted.
-   The registry will contain the names of the Benchmarks, Policy sets,
-   DISA STIGS, controls, or other groupings of policy and measurements
-   to map the standards document to a claim set for verification.
+   Draft section - authors know more work is needed to properly define
+   the registry and claims.  This section is here now to assist in
+   understanding the concepts.
+
+   This document requests the creation of a Measurement and Policy Set
+   (MPS) registry.  The MPS registry will contain the names of the
+   Benchmarks, Policy sets, DISA STIGS, controls, or other groupings as
+   a policy and measurement set that MAY correlate to standards
+   documents containing assurance guidelines, compliance requirements,
+   or other defined claim sets for verification of posture assessment to
+   that MPS.  The MPS registry will include the policy definition for
+   specific levels of MPS assurance to enable interoperability between
+   assertions of compliance (or lack thereof) and reporting systems.
+
+   +===============+=======================+==========================+
+   | MPS Name      | MPS Description       | File with MPS definition |
+   +===============+=======================+==========================+
+   | Ubuntu-CIS-L1 | Ubuntu CIS Benchmark, | http:// /Ubuntu-CIS-     |
+   |               | level 1 assurance     | L1.txt                   |
+   +---------------+-----------------------+--------------------------+
+
+                                 Table 2
+
+   The MPS name includes versions or level information, allowing for
+   distinct policy or measurement sets and definitions of those sets
+   (including the supporting formats used to write the definitions).
+
+8.1.  Additions to the JWT and CWT registries requested
+
+   This document requests the following JWT claims per the specification
+   requirement required for the JSON Web Token (JWT) registry defined in
+   RFC7519.
+
+        +=======+============================+====================+
+        | Claim | Long Name                  | Claim Description  |
+        +=======+============================+====================+
+        | MPS   | Measurement or Policy Set  | Name for the MPS   |
+        +-------+----------------------------+--------------------+
+        | LEM   | Log Evidence of MPS        | Log File or URI    |
+        +-------+----------------------------+--------------------+
+        | PCR   | TPM PCR Values             | URI                |
+        +-------+----------------------------+--------------------+
+        | FMA   | Format of MPS Attestations | Format of included |
+        |       |                            | attestations       |
+        +-------+----------------------------+--------------------+
+        | HSH   | Hash Value/Message Digest  | Hash value of      |
+        |       |                            | claim-set          |
+        +-------+----------------------------+--------------------+
+
+                                  Table 3
+
+8.2.  MPS (Measurement or Policy Set) Claim
+
+   The MPS (Measurement or Policy Set) claim identifies the policy and
+   measurement set being reported.  The MPS MAY be registered to the MPS
+   IANA registry.  The MPS may be specified to specific levels of
+   assurance to hardening, loosening guides or benchmarks to provide
+   interoperability in reporting.  The processing of this claim is
+   generally application specific.  The MPS value is a case-sensitive
+   string containing a StringOrURI value.  Use of this claim is
+   OPTIONAL.
+
+   This document requests the following CWT claims per the specification
+   requirement required for the CBOR Web Token (CWT) registry defined in
+   RFC8392.
+
+     +=======+================+====================+================+
+     | Claim | Long Name      | Claim Description  | JWT Claim Name |
+     +=======+================+====================+================+
+     | MPS   | Measurement or | Name for the MPS   | MPS            |
+     |       | Policy Set     |                    |                |
+     +-------+----------------+--------------------+----------------+
+     | LEM   | Log Evidence   | Log File or URI    | LEM            |
+     |       | of MPS         |                    |                |
+     +-------+----------------+--------------------+----------------+
+     | PCR   | TPM PCR Values | URI                | PCR            |
+     +-------+----------------+--------------------+----------------+
+     | FMA   | Format of MPS  | Format of included | FMA            |
+     |       | Attestations   | attestations       |                |
+     +-------+----------------+--------------------+----------------+
+     | HSH   | Hash Value/    | Hash value of      | HSH            |
+     |       | Message Digest | claim-set          |                |
+     +-------+----------------+--------------------+----------------+
+
+                                 Table 4
 
 9.  References
 
@@ -297,9 +426,9 @@ Table of Contents
    [I-D.ietf-rats-eat]
               Lundblade, L., Mandyam, G., O'Donoghue, J., and C.
               Wallace, "The Entity Attestation Token (EAT)", Work in
-              Progress, Internet-Draft, draft-ietf-rats-eat-25, 15
-              January 2024, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-rats-eat-25>.
+              Progress, Internet-Draft, draft-ietf-rats-eat-26, 5 May
+              2024, <https://datatracker.ietf.org/doc/html/draft-ietf-
+              rats-eat-26>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -341,14 +470,16 @@ Contributors
    sets.  Thank you, Samant Kakarla and Huijun Xie from Dell
    Technologies, for your detailed review and corrections on boot
    process details.  Section 3 has been contributed by Rudy Bauer from
-   Dell as well and an author will be added on the next revision.
+   Dell as well and an author will be added on the next revision.  IANA
+   section added in version 7 by Kathleen Moriarty, expanding the claims
+   registered and adding a proposed registry to define policy and
+   measurement sets.
 
 Authors' Addresses
 
    Kathleen M. Moriarty
-   Center for Internet Security
-   31 Tech Valley Drive
-   East Greenbush, NY 12061
+   Transforming Information Security LLC
+   MA
    United States of America
    Email: kathleen.Moriarty.ietf@gmail.com
 
