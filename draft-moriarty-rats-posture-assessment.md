@@ -20,7 +20,7 @@ venue:
   mail: "rats@ietf.org"
   arch: https://mailarchive.ietf.org/arch/browse/rats/
   github: kme/draft-moriarty-attestationsets
-  latest: https://kme.github.io/draft-moriarty-attestationsets/draft-moriarty-attestationsets.html
+  latest: https://kme.github.io/draft-moriarty-attestationsets/draft-moriarty-rats-posture-assessment.html
 
 author:
 - name: Kathleen M. Moriarty
