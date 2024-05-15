@@ -3,7 +3,7 @@ v: 3
 
 title: Scalable Remote Attestation for Systems, Containers, and Applications
 abbrev: SRASCA
-docname: draft-moriarty-attestationsets-latest
+docname: draft-moriarty-rats-posture-assessment-latest
 cat: std
 consensus: yes
 submissiontype: IETF
@@ -19,8 +19,8 @@ venue:
   type: "Working Group"
   mail: "rats@ietf.org"
   arch: https://mailarchive.ietf.org/arch/browse/rats/
-  github: aj-stein-nist/draft-moriarty-attestationsets
-  latest: https://aj-stein-nist.github.io/draft-moriarty-attestationsets/draft-moriarty-attestationsets.html
+  github: kme/draft-moriarty-attestationsets
+  latest: https://kme.github.io/draft-moriarty-attestationsets/draft-moriarty-attestationsets.html
 
 author:
 - name: Kathleen M. Moriarty
