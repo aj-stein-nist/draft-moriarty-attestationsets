@@ -3,7 +3,7 @@ v: 3
 
 title: Scalable Remote Attestation for Systems, Containers, and Applications
 abbrev: SRASCA
-docname: draft-moriarty-attestationsets-latest
+docname: draft-moriarty-rats-posture-assessment-latest
 cat: std
 consensus: yes
 submissiontype: IETF
@@ -19,8 +19,8 @@ venue:
   type: "Working Group"
   mail: "rats@ietf.org"
   arch: https://mailarchive.ietf.org/arch/browse/rats/
-  github: aj-stein-nist/draft-moriarty-attestationsets
-  latest: https://aj-stein-nist.github.io/draft-moriarty-attestationsets/draft-moriarty-attestationsets.html
+  github: kme/draft-moriarty-attestationsets
+  latest: https://kme.github.io/draft-moriarty-attestationsets/draft-moriarty-rats-posture-assessment.html
 
 author:
 - name: Kathleen M. Moriarty
@@ -78,7 +78,7 @@ This document describes a method to use existing attestation formats and protoco
 By way of example, the Center for Internet Security (CIS) hosts recommended configuration settings to secure operating systems, applications, and devices in CIS Benchmarks developed with industry experts.
 Attestations aligned to the CIS Benchmarks or other configuration guide such as a DISA STIG could be used to assert the configuration meets expectations.
 This has already been done for multiple platforms to demonstrate assurance for firmware according to NIST SP 800-193, Firmware Resiliency Guidelines [FIRMWARE].  In order to scale remote attestation, a single attestation for a set of benchmarks or policies being met with a link to the verification logs from the local assessments, is the evidence that may be sent to the verifier and then the relying party.
-On traditional servers, assurance to NIST SP 800-193 is provable through attestation from a root of trust (RoT), using the Trusted Computing Group (TCG) Trusted Platform Module (TPM) chip and attestation formats. However, this remains local and one knows the policies and measurements have been met if other functions that rely on the assurance are running. 
+On traditional servers, assurance to NIST SP 800-193 is provable through attestation from a root of trust (RoT), using the Trusted Computing Group (TCG) Trusted Platform Module (TPM) chip and attestation formats. However, this remains local and one knows the policies and measurements have been met if other functions that rely on the assurance are running.
 
 At boot, policy and measurement expectations are verified against a set of "golden policies" from collected evidence and are verified to meet expected values.  Device identity and measurements can also be attested at runtime.
 The attestations on evidence (e.g. hash of boot element) and verification of attestations are typically contained within a system and are limited to the control plane for management.
