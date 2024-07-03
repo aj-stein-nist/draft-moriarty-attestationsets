@@ -1,8 +1,8 @@
 ---
 v: 3
 
-title: Scalable Remote Attestation for Systems, Containers, and Applications
-abbrev: SRASCA
+title: Remote Posture Assessment for Systems, Containers, and Applications
+abbrev: RPASCA
 docname: draft-moriarty-rats-posture-assessment-latest
 cat: std
 consensus: yes
