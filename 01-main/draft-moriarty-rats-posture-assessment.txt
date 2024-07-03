@@ -5,13 +5,13 @@
 Network Working Group                                     K. M. Moriarty
 Internet-Draft                     Transforming Information Security LLC
 Intended status: Standards Track                              M. Wiseman
-Expires: 16 November 2024                                Beyond Identity
+Expires: 4 January 2025                                  Beyond Identity
                                                               A.J. Stein
                                                                     NIST
-                                                             15 May 2024
+                                                             3 July 2024
 
 
- Scalable Remote Attestation for Systems, Containers, and Applications
+  Remote Posture Assessment for Systems, Containers, and Applications
              draft-moriarty-rats-posture-assessment-latest
 
 Abstract
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 16 November 2024.
+   This Internet-Draft will expire on 4 January 2025.
 
 Copyright Notice
 
@@ -101,7 +101,7 @@ Table of Contents
    of local attestation is through the Trusted Computing Group's Trusted
    Platform Module (TPM) format and assessment method.  This and other
    methods provide a secured log for transparency on the results of the
-   assessed evidence against expacted values.  In order to support
+   assessed evidence against expected values.  In order to support
    continuous monitoring of posture assessment and integrity in an
    enterprise or large data center, the local assessments and
    remediation are useful to reduce load on the network and remote
@@ -113,12 +113,12 @@ Table of Contents
    tied including a link to supporting logs with a remote attestation
    defined in an Entity Attestation Token (EAT) profile
    [I-D.ietf-rats-eat] provides a way to accomplish that goal.  The
-   level of intergation for local attestation meeting defined policies
+   level of integration for local attestation meeting defined policies
    and measurements at specific levels, including the ability to
    remediate makes posture assessment through attestation achievable for
    organizations of all sizes due to integration being required in
    existing toolsets and systems, built as an intrinsic capability.  The
-   measurement and policy groupings results summarized in an EAT profile
+   measurement and policy grouping results summarized in an EAT profile
    may be provided by the vendor or by a neutral third party to enable
    ease of use and consistent implementations.  The local system or
    server host performs the assessment of posture and remediation.  This
@@ -426,9 +426,9 @@ Table of Contents
    [I-D.ietf-rats-eat]
               Lundblade, L., Mandyam, G., O'Donoghue, J., and C.
               Wallace, "The Entity Attestation Token (EAT)", Work in
-              Progress, Internet-Draft, draft-ietf-rats-eat-26, 5 May
+              Progress, Internet-Draft, draft-ietf-rats-eat-28, 25 June
               2024, <https://datatracker.ietf.org/doc/html/draft-ietf-
-              rats-eat-26>.
+              rats-eat-28>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -473,7 +473,8 @@ Contributors
    Dell as well and an author will be added on the next revision.  IANA
    section added in version 7 by Kathleen Moriarty, expanding the claims
    registered and adding a proposed registry to define policy and
-   measurement sets.
+   measurement sets.  Thank you to Henk Birkholz for his review and
+   edits.
 
 Authors' Addresses
 

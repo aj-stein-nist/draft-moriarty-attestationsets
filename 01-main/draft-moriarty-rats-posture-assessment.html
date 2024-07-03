@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta content="Common,Latin" name="scripts">
 <meta content="initial-scale=1.0" name="viewport">
-<title>Scalable Remote Attestation for Systems, Containers, and Applications</title>
+<title>Remote Posture Assessment for Systems, Containers, and Applications</title>
 <meta content="Kathleen M. Moriarty" name="author">
 <meta content="Monty Wiseman" name="author">
 <meta content="A.J. Stein" name="author">
@@ -12,22 +12,21 @@
        This document establishes an architectural pattern whereby a remote attestation could be issued for a complete set of benchmarks or controls that are defined and grouped by an external entity, preventing the need to send over individual attestations for each item within a benchmark or control framework.
 This document establishes a pattern to list sets of benchmarks and controls within CWT and JWT formats for use as an Entity Attestation Token (EAT). 
     " name="description">
-<meta content="xml2rfc 3.21.0" name="generator">
+<meta content="xml2rfc 3.22.0" name="generator">
 <meta content="draft-moriarty-rats-posture-assessment-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.21.0
-    Python 3.11.9
+  xml2rfc 3.22.0
+    Python 3.12.3
     ConfigArgParse 1.7
     google-i18n-address 3.1.0
     intervaltree 3.1.0
-    Jinja2 3.1.2
-    lxml 4.9.3
-    platformdirs 4.2.1
+    Jinja2 3.1.4
+    lxml 4.9.4
+    platformdirs 4.2.2
     pycountry 22.3.5
     PyYAML 6.0.1
-    requests 2.31.0
-    setuptools 68.2.2
-    six 1.16.0
+    requests 2.32.3
+    setuptools 69.5.1
     wcwidth 0.2.13
 -->
 <link href="draft-moriarty-rats-posture-assessment.xml" rel="alternate" type="application/rfc+xml">
@@ -1026,12 +1025,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <table class="ears">
 <thead><tr>
 <td class="left">Internet-Draft</td>
-<td class="center">SRASCA</td>
-<td class="right">May 2024</td>
+<td class="center">RPASCA</td>
+<td class="right">July 2024</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Moriarty, et al.</td>
-<td class="center">Expires 16 November 2024</td>
+<td class="center">Expires 4 January 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1044,12 +1043,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-moriarty-rats-posture-assessment-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-05-15" class="published">15 May 2024</time>
+<time datetime="2024-07-03" class="published">3 July 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-11-16">16 November 2024</time></dd>
+<dd class="expires"><time datetime="2025-01-04">4 January 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1067,7 +1066,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </dd>
 </dl>
 </div>
-<h1 id="title">Scalable Remote Attestation for Systems, Containers, and Applications</h1>
+<h1 id="title">Remote Posture Assessment for Systems, Containers, and Applications</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
 <p id="section-abstract-1">This document establishes an architectural pattern whereby a remote attestation could be issued for a complete set of benchmarks or controls that are defined and grouped by an external entity, preventing the need to send over individual attestations for each item within a benchmark or control framework.
@@ -1108,7 +1107,7 @@ This document establishes a pattern to list sets of benchmarks and controls with
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 16 November 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 4 January 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1196,8 +1195,8 @@ This document establishes a pattern to list sets of benchmarks and controls with
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
 <p id="section-1-1">Posture assessment has long been desired, but has been difficult to achieve due to complexities of customization requirements at each organization.
-By using policy and measurement sets that may be offered at various assurance levels, local assessment of evidence can be performed to continuousy assess compliance. An example of a form of local attestation is through the Trusted Computing Group's Trusted Platform Module (TPM) format and assessment method. This and other methods provide a secured log for transparency on the results of the assessed evidence against expacted values. In order to support continuous monitoring of posture assessment and integrity in an enterprise or large data center, the local assessments and remediation are useful to reduce load on the network and remote resources. This is currently done today for the so called trusted boot process. It is useful to share the results of the compliance to expected values for measurements and policies in order to gain a bigger picture view of the governance, risk, and complaince posture for a network. As such, communiciating a summary result as evidence tied including a link to supporting logs with a remote attestation defined in an Entity Attestation Token (EAT) profile <span>[<a href="#I-D.ietf-rats-eat" class="cite xref">I-D.ietf-rats-eat</a>]</span> provides a way to accomplish that goal. The level of intergation for local attestation meeting defined policies and measurements at specific levels, including the ability to remediate makes posture assessment through attestation achievable for organizations of all sizes due to integration being required in existing toolsets and systems, built as an intrinsic capability.
-The measurement and policy groupings results summarized in an EAT profile may be provided by the vendor or by a neutral third party to enable ease of use and consistent implementations. The local system or server host performs the assessment of posture and remediation.
+By using policy and measurement sets that may be offered at various assurance levels, local assessment of evidence can be performed to continuousy assess compliance. An example of a form of local attestation is through the Trusted Computing Group's Trusted Platform Module (TPM) format and assessment method. This and other methods provide a secured log for transparency on the results of the assessed evidence against expected values. In order to support continuous monitoring of posture assessment and integrity in an enterprise or large data center, the local assessments and remediation are useful to reduce load on the network and remote resources. This is currently done today for the so called trusted boot process. It is useful to share the results of the compliance to expected values for measurements and policies in order to gain a bigger picture view of the governance, risk, and complaince posture for a network. As such, communiciating a summary result as evidence tied including a link to supporting logs with a remote attestation defined in an Entity Attestation Token (EAT) profile <span>[<a href="#I-D.ietf-rats-eat" class="cite xref">I-D.ietf-rats-eat</a>]</span> provides a way to accomplish that goal. The level of integration for local attestation meeting defined policies and measurements at specific levels, including the ability to remediate makes posture assessment through attestation achievable for organizations of all sizes due to integration being required in existing toolsets and systems, built as an intrinsic capability.
+The measurement and policy grouping results summarized in an EAT profile may be provided by the vendor or by a neutral third party to enable ease of use and consistent implementations. The local system or server host performs the assessment of posture and remediation.
 This provides simpler options to enable posture assessment at selected levels by organizations without the need to have in-house expertise.
 The measurement and policy sets may also be customized, but not necessary to achieve posture assessment to predefined options.
 This document describes a method to use existing attestation formats and protocols while allowing for defined profiles of policies, benchmarks, and measurements for specific assurance levels to provide transparency on posture assessment results summarized with remote attestations.<a href="#section-1-1" class="pilcrow">¶</a></p>
@@ -1515,7 +1514,7 @@ This document does not add security consideration over what has been described i
 <dl class="references">
 <dt id="I-D.ietf-rats-eat">[I-D.ietf-rats-eat]</dt>
         <dd>
-<span class="refAuthor">Lundblade, L.</span>, <span class="refAuthor">Mandyam, G.</span>, <span class="refAuthor">O'Donoghue, J.</span>, and <span class="refAuthor">C. Wallace</span>, <span class="refTitle">"The Entity Attestation Token (EAT)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-rats-eat-26</span>, <time datetime="2024-05-05" class="refDate">5 May 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-26">https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-26</a>&gt;</span>. </dd>
+<span class="refAuthor">Lundblade, L.</span>, <span class="refAuthor">Mandyam, G.</span>, <span class="refAuthor">O'Donoghue, J.</span>, and <span class="refAuthor">C. Wallace</span>, <span class="refTitle">"The Entity Attestation Token (EAT)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-rats-eat-28</span>, <time datetime="2024-06-25" class="refDate">25 June 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-28">https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-28</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC2119">[RFC2119]</dt>
         <dd>
@@ -1567,7 +1566,8 @@ This document does not add security consideration over what has been described i
 Thank you to Nick Grobelney, Dell Technologies, for your review and contribution to separate out the policy and measurement sets.
 Thank you, Samant Kakarla and Huijun Xie from Dell Technologies, for your detailed review and corrections on boot process details.
 Section 3 has been contributed by Rudy Bauer from Dell as well and an author will be added on the next revision.
-IANA section added in version 7 by Kathleen Moriarty, expanding the claims registered and adding a proposed registry to define policy and measurement sets.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+IANA section added in version 7 by Kathleen Moriarty, expanding the claims registered and adding a proposed registry to define policy and measurement sets.
+Thank you to Henk Birkholz for his review and edits.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="authors-addresses">
