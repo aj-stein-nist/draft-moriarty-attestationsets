@@ -22,7 +22,8 @@ Abstract
    preventing the need to send over individual attestations for each
    item within a benchmark or control framework.  This document
    establishes a pattern to list sets of benchmarks and controls within
-   CWT and JWT formats for use as an Entity Attestation Token (EAT).
+   CWT and JWT formats for use as an Entity Attestation Token (EAT)
+   partial profile.
 
 About This Document
 
