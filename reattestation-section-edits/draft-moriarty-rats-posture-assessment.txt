@@ -284,8 +284,8 @@ Table of Contents
    *  Run remote attestation after modification of the Target
       Environment as an external validation, or
 
-   *  Continue operation of the Target Environment as-is, without the
-      Attester verifying fresh Evidence, thereby increasing risk
+   *  Continue operation of the Target Environment as-is, without
+      verification, potentially increasing risk
 
    In the case of Re-Attestation:
 
