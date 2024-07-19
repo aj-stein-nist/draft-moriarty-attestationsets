@@ -1330,28 +1330,28 @@ The trustworthiness will be conveyed on original verified evidence as well as th
       </h2>
 <p id="section-5-1">The remote attestation framework shall include provisions within the system and attestation authority to allow for Product modification.<a href="#section-5-1" class="pilcrow">¶</a></p>
 <p id="section-5-2">Over its lifecycle, the Product may experience modification due to: maintenance, failures, upgrades, expansion, moves, etc..<a href="#section-5-2" class="pilcrow">¶</a></p>
-<p id="section-5-3">The customer can chose to:<a href="#section-5-3" class="pilcrow">¶</a></p>
+<p id="section-5-3">The Relying Party Owner consuming the Target Environment (e.g. customer using the product) can chose to:<a href="#section-5-3" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-5-4.1">
-          <p id="section-5-4.1.1">Run remote attestation after product modification, or<a href="#section-5-4.1.1" class="pilcrow">¶</a></p>
+          <p id="section-5-4.1.1">Recommend or require the Attester provide fresh Evidence to the Verifier after modification, or<a href="#section-5-4.1.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-5-4.2">
-          <p id="section-5-4.2.1">Not take action and remain un-protected<a href="#section-5-4.2.1" class="pilcrow">¶</a></p>
+          <p id="section-5-4.2.1">Continue operation of the Target Environment without the Attester verifying fresh Evidence, thereby increasing risk<a href="#section-5-4.2.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="section-5-5">In the case of Re-Attestation:<a href="#section-5-5" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-5-6.1">
-          <p id="section-5-6.1.1">framework needs to invalidate previous TPM PCR values and tokens,<a href="#section-5-6.1.1" class="pilcrow">¶</a></p>
+          <p id="section-5-6.1.1">framework needs to invalidate previous Reference Values (e.g. TPM PCR values and tokens),<a href="#section-5-6.1.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-5-6.2">
-          <p id="section-5-6.2.1">framework needs to collect new measurements,<a href="#section-5-6.2.1" class="pilcrow">¶</a></p>
+          <p id="section-5-6.2.1">framework needs to specify an Appraisal Policy for Evidence that requires fresh Evidence,<a href="#section-5-6.2.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-5-6.3">
           <p id="section-5-6.3.1">framework needs to maintain history or allow for history to be logged to enable change traceability attestation, and<a href="#section-5-6.3.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-5-6.4">
-          <p id="section-5-6.4.1">framework needs to notify that the previous attestation has been invalidated<a href="#section-5-6.4.1" class="pilcrow">¶</a></p>
+          <p id="section-5-6.4.1">framework needs to notify that the previous Attestation Results has been invalidated<a href="#section-5-6.4.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 </section>
