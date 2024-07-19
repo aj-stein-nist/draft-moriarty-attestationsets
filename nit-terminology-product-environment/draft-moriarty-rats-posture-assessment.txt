@@ -269,9 +269,9 @@ Table of Contents
 5.  Supportability and Re-Attestation
 
    The remote attestation framework shall include provisions for a
-   Verifier Owner to declare an appraisal policy that allows for
-   modification of the Target Environment (e.g. a product, system, or
-   service).
+   Verifier Owner and Relying Party Owner to declare an Appraisal Policy
+   for Attestation Results and Evidence that allows for modification of
+   the Target Environment (e.g. a product, system, or service).
 
    Over its lifecycle, the Target Environment may experience
    modification due to: maintenance, failures, upgrades, expansion,
