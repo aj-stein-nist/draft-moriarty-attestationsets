@@ -13,7 +13,8 @@ Expires: 20 January 2025                                 Beyond Identity
                                                             19 July 2024
 
 
-  Remote Posture Assessment for Systems, Containers, and Applications
+ Remote Posture Assessment for Systems, Containers, and Applications at
+                                 Scale
              draft-moriarty-rats-posture-assessment-latest
 
 Abstract
@@ -27,7 +28,7 @@ Abstract
    CWT and JWT formats for use as an Entity Attestation Token (EAT).
    While the discussion below pertains mostly to TPM, other Roots of
    Trust such as TCG DICE, and non-TCG defined components will also be
-   inclulded.
+   included.
 
 About This Document
 
